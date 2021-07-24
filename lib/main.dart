@@ -38,6 +38,7 @@ class AppController extends GetxController {
 
   /*
   Por decisión invocada desde otro controller.
+  Para separar la carga de datos de la inicialización del controlador
   Se podría invocar desde onInit
   */
   void loadData() {
