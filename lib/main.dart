@@ -3,73 +3,22 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-/*
-Loader
-Auxiliar para cargar datos y mantener estado
-*/
-class _Loader {
-  bool loading = false;
-  bool done = false;
-  Function loader;
-  _Loader(this.loader);
-}
-
-/*
-AppController
-Responsable de mantener los datos que pueden ser accedidos desde varias pantallas
-*/
-class AppController extends GetxController {
-  static AppController get to => Get.find<AppController>();
-  final box = GetStorage();
-
-  var _loaders = <String, _Loader>{};
-  var nLoading = (-1).obs;
-
-  @override
-  void onInit() {
-    _loaders = {
-      'Data A': _Loader(_loadA),
-      'Data B': _Loader(_loadB),
-      'Data C': _Loader(_loadC),
-      'Data D': _Loader(_loadD),
-    };
-    super.onInit();
-  }
-
-  /*
-  Por decisión invocada desde otro controller.
-  Para separar la carga de datos de la inicialización del controlador
-  Se podría invocar desde onInit
-  */
-  void loadData() {
-    nLoading.value = _loaders.length;
-
-    _loaders.forEach((data, dl) {
-      print('loading $data...');
-      dl.loading = true;
-      dl.loader.call().then((_) {
-        dl.loading = false;
-        dl.done = true;
-        nLoading.value--;
-        print('$data loaded');
-      });
-    });
-  }
-
-  String getDataStatus(String key) => _loaders[key]!.done
-      ? 'done'
-      : _loaders[key]!.loading
-          ? 'loading...'
-          : 'pending';
-
-  /*
-  Funciones de carga de datos
-  */
-  Future<void> _loadA() async => await 4.delay();
-  Future<void> _loadB() async => await 2.delay();
-  Future<void> _loadC() async => await 3.delay();
-  Future<void> _loadD() async => await 1.delay();
-}
+import 'global/app_controller.dart';
+import 'global/app_themes.dart';
+import 'models/evento.dart';
+import 'pages/actividad/actividad_form_page.dart';
+import 'pages/agenda/agenda_controller.dart';
+import 'pages/agenda/agenda_page.dart';
+import 'pages/evento/evento_form_page.dart';
+import 'pages/home/home_page.dart';
+import 'pages/horario/horario_controller.dart';
+import 'pages/horario/horario_page.dart';
+import 'pages/marcas/marcas_controller.dart';
+import 'pages/marcas/marcas_page.dart';
+import 'pages/reloj/reloj.dart';
+import 'pages/splash/splash_controller.dart';
+import 'pages/splash/splash_page.dart';
+import 'services/db_storagex.dart';
 
 void main() async {
   initializeDateFormatting('es_ES', null);
@@ -79,9 +28,11 @@ void main() async {
 }
 
 Future<void> initServices() async {
-  print('starting services ...');
+  print('Lanzando servicios ...');
   await GetStorage.init();
-  print('All services started...');
+  await Get.putAsync(
+      () => DbGetXStorage<Evento>(Evento.fromStr).init()); // Eventos
+  print('Todos los servicios corriendo ...');
 }
 
 class App extends StatelessWidget {
@@ -90,6 +41,8 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       locale: Get.deviceLocale,
+      theme: light(),
+      darkTheme: dark(),
       initialRoute: '/splash',
       initialBinding:
           BindingsBuilder(() => {Get.put(AppController(), permanent: true)}),
@@ -98,76 +51,50 @@ class App extends StatelessWidget {
           name: '/splash',
           page: () => SplashPage(),
           binding: BindingsBuilder(() {
-            Get.put(SplashController(route: '/home', app: AppController.to));
+            Get.put(
+                SplashController(nextRoute: '/home', app: AppController.to));
           }),
         ),
         GetPage(
-          name: '/home',
-          page: () => HomePage(),
+            name: '/home',
+            page: () => HomePage(),
+            binding: BindingsBuilder(() {
+              Get.put(HomeController());
+              Get.put(HorarioController(app: AppController.to));
+              Get.put(AgendaController(app: AppController.to));
+            })),
+        GetPage(
+          name: '/marcas',
+          page: () => MarcasPage(),
+          binding: BindingsBuilder(() {
+            Get.put(MarcasController(app: AppController.to));
+          }),
+        ),
+        GetPage(
+            name: '/horario',
+            page: () => HorarioPage(),
+            binding: BindingsBuilder(() {
+              Get.put(HorarioController(app: AppController.to));
+            })),
+        GetPage(
+          name: '/actividad',
+          page: () => ActividadFormPage(),
+        ),
+        GetPage(
+            name: '/agenda',
+            page: () => AgendaPage(),
+            binding: BindingsBuilder(() {
+              Get.put(AgendaController(app: AppController.to));
+            })),
+        GetPage(
+          name: '/evento',
+          page: () => EventoFormPage(),
+        ),
+        GetPage(
+          name: '/reloj',
+          page: () => RelojPage(),
         ),
       ],
     );
-  }
-}
-
-/*
-SplashController
-La única función actual de este Controller es realizar la navegación a HOME.
-No he querido hacer la navegación en AppController (Global) para evitar dispersar 'responsabilidades'
-*/
-class SplashController extends GetxController {
-  AppController app;
-  String route;
-  SplashController({required this.route, required this.app});
-
-  late Worker _ever;
-  @override
-  void onInit() {
-    app.loadData();
-    // Revisa valores en el controlador principal
-    _ever = ever(app.nLoading, (_) {
-      if (app.nLoading.value == 0) Get.offAllNamed(route);
-    });
-    super.onInit();
-  }
-
-  @override
-  void onClose() {
-    _ever.dispose();
-  }
-}
-
-class SplashPage extends StatelessWidget {
-  SplashPage({Key? key}) : super(key: key);
-  final app = AppController.to;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Obx(() => app.nLoading.value == 0
-            ? Text('Done')
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                  Text('Loading ${app.nLoading.value}'),
-                  Text('A: ${app.getDataStatus("Data A")}'),
-                  Text('B: ${app.getDataStatus("Data B")}'),
-                  Text('C: ${app.getDataStatus("Data C")}'),
-                  Text('D: ${app.getDataStatus("Data D")}'),
-                ],
-              )),
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('H O M E')));
   }
 }
