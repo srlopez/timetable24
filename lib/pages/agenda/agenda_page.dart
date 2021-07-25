@@ -133,12 +133,12 @@ class AgendaPage extends StatelessWidget {
             onSelected: ((value) async {
               //if (value == 'Reload') _.inicializarItems();
               if (value == 'Inicializar') _.deleteAll();
-              if (value == 'Ver reloj') await Get.toNamed('/reloj');
+              //if (value == 'Ver reloj') await Get.toNamed('/reloj');
 
               _.update();
             }),
             itemBuilder: (BuildContext context) {
-              return {'Inicializar', 'Ver reloj'}.map((String choice) {
+              return {'Inicializar'}.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),

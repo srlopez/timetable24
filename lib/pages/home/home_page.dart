@@ -21,33 +21,36 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Obx(() => IndexedStack(
+    return Obx(() => Scaffold(
+          body: IndexedStack(
             index: _.tabIndex.value,
             children: [
               AgendaPage(),
               HorarioPage(),
               RelojPage(),
             ],
-          )),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: _.changeTabIndex,
-        currentIndex: _.tabIndex.value,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.view_list),
-            label: 'Agenda',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.today),
-            label: 'Horario',
+          bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Theme.of(context).accentColor,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            onTap: _.changeTabIndex,
+            currentIndex: _.tabIndex.value,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.view_list),
+                label: 'Agenda',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.apps),
+                label: 'Horario',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.av_timer),
+                label: 'Reloj',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.access_time),
-            label: 'Reloj',
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }

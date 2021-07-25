@@ -111,8 +111,10 @@ Color highlightColor(Color c) {
 double getActividadesHeight(BuildContext context) {
   final double mheight = MediaQuery.of(context).size.height;
   var abheight = AppBar().preferredSize.height;
+  var bnheight = MediaQuery.of(context).padding.bottom;
   var pixelsHeight = mheight -
       abheight -
+      bnheight -
       Horario.altoCabecera -
       Horario.altoPie -
       2 * Horario.altoAjusteActividades;

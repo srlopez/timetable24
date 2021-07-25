@@ -38,7 +38,7 @@ class HorarioPage extends StatelessWidget {
     AppController app,
     PageController horarioPageController,
   ) {
-    var menu = ['Marcas horarias', 'Reiniciar actividades', 'Ver reloj'];
+    var menu = ['Marcas horarias', 'Reiniciar actividades'];
 
     return AppBar(
       backwardsCompatibility: false,
@@ -62,7 +62,7 @@ class HorarioPage extends StatelessWidget {
           onSelected: ((value) async {
             if (value == menu[0]) await Get.toNamed('/marcas');
             if (value == menu[1]) await app.inicializarActividades();
-            if (value == menu[2]) await Get.toNamed('/reloj');
+            //if (value == menu[2]) await Get.toNamed('/reloj');
             _.update();
           }),
           itemBuilder: (BuildContext context) {
