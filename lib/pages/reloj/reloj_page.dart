@@ -14,9 +14,6 @@ class RelojPage extends StatelessWidget {
     final _ = RelojController.to;
     final pd = _.progresoData;
 
-    print(_.textos);
-    print(_.texto.value);
-
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 0,
@@ -37,7 +34,7 @@ class RelojPage extends StatelessWidget {
                   Expanded(
                     child: Obx(() {
                       final value = _.textos[_.texto.value];
-                      final p = _.texto.value == 0 ? 2 : 0;
+                      final p = !pd.value.visible || _.texto.value == 0 ? 2 : 0;
                       return _buildReloj(context, value, p);
                     }),
                   ),
