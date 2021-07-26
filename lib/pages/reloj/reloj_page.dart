@@ -12,8 +12,10 @@ class RelojPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _ = RelojController.to;
+    final pd = _.progresoData;
 
-    final pd = _.pd;
+    print(_.textos);
+    print(_.texto.value);
 
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +34,13 @@ class RelojPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   // TEXTO CENTRAL
-                  Expanded(child: _buildReloj(context)),
+                  Expanded(
+                    child: Obx(() {
+                      final value = _.textos[_.texto.value];
+                      final p = _.texto.value == 0 ? 2 : 0;
+                      return _buildReloj(context, value, p);
+                    }),
+                  ),
                   // BARRA DE PROGRESO
                   Obx(() => pd.value.visible
                       ? _buildProgressBar(context, pd.value)
@@ -58,7 +66,10 @@ class RelojPage extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            BText('◀ ▶', onPressed: _.nextScale),
+            //https://en.wikibooks.org/wiki/Unicode/List_of_useful_symbols
+            Obx(() => BText(['12:00', _.formatResto(40, 10)][_.texto.value],
+                onPressed: _.nextText)),
+            BText('▼▲', onPressed: _.nextScale),
             BText('aℬαβ', onPressed: _.nextFont),
             Obx(() => BText('⓰', //'⬤'
                 onPressed: _.nextColor,
@@ -82,6 +93,21 @@ class RelojPage extends StatelessWidget {
         Theme.of(context).textTheme.bodyText1!.copyWith(color: pd.color);
 
     var height = 30.0;
+    var resto = _.formatResto(pd.total, pd.done);
+
+    var decoIni = BoxDecoration(
+      color: lighten(pd.color, .3),
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(height / 2),
+          bottomLeft: Radius.circular(height / 2)),
+    );
+
+    var decoFin = BoxDecoration(
+        color: darken(pd.color, 0),
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(height / 2),
+            bottomRight: Radius.circular(height / 2)));
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -99,17 +125,21 @@ class RelojPage extends StatelessWidget {
               children: [
                 Expanded(
                     flex: pd.done,
-                    child:
-                        Container(height: height, color: darken(pd.color, 0))),
+                    child: Container(
+                        height: height,
+                        //color: darken(pd.color, 0),
+                        decoration: decoIni)),
                 Expanded(
                     flex: pd.total - pd.done,
                     child: Container(
-                        height: height, color: lighten(pd.color, .3))),
+                        height: height,
+                        //color: lighten(pd.color, .3),
+                        decoration: decoFin)),
               ],
             ),
             Center(
               child: Text(
-                "-${pd.total - pd.done}'",
+                resto,
                 style: font(textStyle: fStyle.copyWith(color: Colors.black)),
                 textScaleFactor: 2,
               ),
@@ -127,44 +157,37 @@ class RelojPage extends StatelessWidget {
     );
   }
 
-  Widget _buildReloj(BuildContext context) {
+  Widget _buildReloj(BuildContext context, String value, int iParpadeo) {
     final _ = RelojController.to;
 
-    //print('_buildReloj');
+    var sFactor = _.scales[_.scale.value];
+    var font = _.fonts[_.font.value];
+    var color = _.colores[_.color.value];
+
+    var fStyle = Theme.of(context).textTheme.bodyText1!.copyWith(color: color);
+    var fStyleDots = fStyle.copyWith(
+        color: _.light
+            ? color
+            : _.color.value == 0
+                ? darken(color, .2)
+                : lighten(color, .2));
+
     return Center(
-      child: Obx(() {
-        //print('_buildReloj Obx');
-
-        var hora = _.currentHMS[0];
-        var mins = _.currentHMS[1];
-        var puntos = _.dots;
-        var sFactor = _.scales[_.scale.value];
-        var font = _.fonts[_.font.value];
-        var color = _.colores[_.color.value];
-
-        var fStyle =
-            Theme.of(context).textTheme.bodyText1!.copyWith(color: color);
-        var fStyleDots = fStyle.copyWith(
-            color: _.light
-                ? color
-                : _.color.value == 0
-                    ? darken(color, .2)
-                    : lighten(color, .2));
-
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(hora,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (iParpadeo > 0)
+            Text(value.substring(0, iParpadeo),
                 style: font(textStyle: fStyle), textScaleFactor: sFactor),
-            Text(puntos,
+          if (iParpadeo > -1)
+            Text(value.substring(iParpadeo, iParpadeo + 1),
                 style: font(textStyle: fStyleDots), textScaleFactor: sFactor),
-            Text(mins,
-                style: font(textStyle: fStyle),
-                textScaleFactor: sFactor,
-                overflow: TextOverflow.clip),
-          ],
-        );
-      }),
+          Text(value.substring(iParpadeo + 1),
+              style: font(textStyle: fStyle),
+              textScaleFactor: sFactor,
+              overflow: TextOverflow.clip),
+        ],
+      ),
     );
   }
 }

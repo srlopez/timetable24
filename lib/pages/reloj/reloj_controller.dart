@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:timetable24/global/app_controller.dart';
-import 'package:timetable24/models/actividad.dart';
 import 'package:timetable24/models/marca_horaria.dart';
 
 class RelojController extends GetxController {
@@ -27,18 +26,21 @@ class RelojController extends GetxController {
 
   // Storage
   final box = GetStorage();
-  bWrite() => box.write('reloj', [scale.value, font.value, color.value]);
+  bWrite() =>
+      box.write('reloj', [scale.value, font.value, color.value, texto.value]);
   bRead() {
-    var values = box.read('reloj') ?? [0, 0, 0];
+    var values = box.read('reloj') ?? [0, 0, 0, 0];
     scale.value = values[0];
     font.value = values[1];
     color.value = values[2];
+    texto.value = values[3];
   }
 
-  // hora
+  // hora resto
   String _getTime() => DateFormat.Hms().format(DateTime.now());
+  String formatResto(int total, int done) => "-${total - done}'";
   var currentTime = '';
-  var currentRest = '';
+  //var currentRest = '';
 
   var currentHMS = ['', '', ''].obs;
   var milliseconds = 1000;
@@ -51,6 +53,8 @@ class RelojController extends GetxController {
     currentHMS.value = nextTime;
     currentTime = nextTime[0] + dots + nextTime[1];
     light = !light;
+    textos[0] = currentTime;
+    textos[1] = currentTime;
   }
 
   void setTimer() =>
@@ -60,22 +64,20 @@ class RelojController extends GetxController {
       });
 
   // Actividad
-  var pd = ProgresoData.Vacio().obs;
+  var progresoData = ProgresoData.fromNull().obs;
 
   void setActividad() {
     var now = DateTime.now();
-    // var actividad = app.esFechaConActividad(now);
-    //print('actividad $actividad');
 
     if (!app.esFechaConActividad(now)) {
       // Dia marcado como sin actividad horaria
-      pd.value = ProgresoData.Vacio();
+      progresoData.value = ProgresoData.fromNull();
       return;
     }
     var act = app.getActividadActual();
     if (act == null) {
       // No hay actividad en este momento
-      pd.value = ProgresoData.Vacio();
+      progresoData.value = ProgresoData.fromNull();
       return;
     }
     var mNow = Marca(DateTime.now().hour, DateTime.now().minute);
@@ -84,7 +86,8 @@ class RelojController extends GetxController {
     var total = act.minutos;
     var done = mNow.diff(mIni);
 
-    pd.value = ProgresoData(
+    textos[1] = formatResto(total, done);
+    progresoData.value = ProgresoData(
         start: mIni, end: mFin, total: total, done: done, color: act.color);
   }
 
@@ -151,6 +154,14 @@ class RelojController extends GetxController {
     color.value = (color.value + 1) % colores.length;
     bWrite();
   }
+
+  // Hora o resto de actividad
+  var texto = 0.obs;
+  var textos = ['', ''];
+  void nextText() {
+    texto.value = (texto.value + 1) % 2;
+    bWrite();
+  }
 }
 
 class ProgresoData {
@@ -161,7 +172,7 @@ class ProgresoData {
   int done = 0;
   Color color = Colors.white;
 
-  ProgresoData.Vacio()
+  ProgresoData.fromNull()
       : start = '',
         end = '',
         total = 0,

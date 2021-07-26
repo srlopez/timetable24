@@ -139,11 +139,11 @@ class ActividadContainer extends StatelessWidget {
             style: TextStyle(fontSize: 10.0, color: colorText),
           );
     // trazas :::actividad.minutos * altoMinuto > 70
-    var am = actividad.minutos * altoMinuto;
-    var m = actividad.minutos;
-    var a = altoMinuto;
-    var d = actividad.dia;
-    var i = index;
+    // var am = actividad.minutos * altoMinuto;
+    // var m = actividad.minutos;
+    // var a = altoMinuto;
+    // var d = actividad.dia;
+    // var i = index;
     // trazas
     return Padding(
       padding: const EdgeInsets.fromLTRB(1, 1, 1, 1),

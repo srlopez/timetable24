@@ -63,7 +63,7 @@ class App extends StatelessWidget {
               Get.put(HomeController());
               Get.put(HorarioController(app: AppController.to));
               Get.put(AgendaController(app: AppController.to));
-              Get.put(RelojController(app: AppController.to));
+              Get.lazyPut(() => RelojController(app: AppController.to));
             })),
         GetPage(
           name: '/marcas',

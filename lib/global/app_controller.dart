@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../services/db_storagex.dart';
@@ -176,7 +174,7 @@ class AppController extends GetxController {
       var diff = mNow.diff(mIni);
       if (diff > 0 && diff <= duracion) return true;
       return false;
-    });
+    }, orElse: () => Actividad(dia: 0, marca: 0, minutos: 0));
     return act.activo ? act : null;
   }
 
@@ -215,8 +213,8 @@ class AppController extends GetxController {
 
     eventos.forEach((e) {
       //print('$fecha ${e.fInicio} ${e.fFin}');
-
-      if (!fecha.isBefore(e.fInicio) && !fecha.isAfter(e.fFin)) {
+      var fFin = DateTime(e.fFin.year, e.fFin.month, e.fFin.day, 23, 59, 59);
+      if (!fecha.isBefore(e.fInicio) && !fecha.isAfter(fFin)) {
         hayFechas = true;
         activo |= e.hayActividad;
         //print('activo $activo');

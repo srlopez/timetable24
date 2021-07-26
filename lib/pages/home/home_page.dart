@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:wakelock/wakelock.dart';
 import '../agenda/agenda_page.dart';
 import '../horario/horario_page.dart';
 import '../reloj/reloj_page.dart';
@@ -12,6 +13,11 @@ class HomeController extends GetxController {
   var tabIndex = 1.obs;
   void changeTabIndex(int index) {
     tabIndex.value = index;
+
+    if (index == 2)
+      Wakelock.enable();
+    else
+      Wakelock.disable();
   }
 }
 
@@ -46,7 +52,7 @@ class HomePage extends StatelessWidget {
                 label: 'Horario',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.av_timer),
+                icon: Icon(Icons.access_time),
                 label: 'Reloj',
               ),
             ],
