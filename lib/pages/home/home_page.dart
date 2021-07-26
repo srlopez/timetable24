@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import '../agenda/agenda_page.dart';
 import '../horario/horario_page.dart';
-import '../reloj/reloj.dart';
+import '../reloj/reloj_page.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find<HomeController>();

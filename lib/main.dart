@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:timetable24/pages/reloj/reloj_controller.dart';
 
 import 'global/app_controller.dart';
 import 'global/app_themes.dart';
@@ -15,7 +16,7 @@ import 'pages/horario/horario_controller.dart';
 import 'pages/horario/horario_page.dart';
 import 'pages/marcas/marcas_controller.dart';
 import 'pages/marcas/marcas_page.dart';
-import 'pages/reloj/reloj.dart';
+import 'pages/reloj/reloj_page.dart';
 import 'pages/splash/splash_controller.dart';
 import 'pages/splash/splash_page.dart';
 import 'services/db_storagex.dart';
@@ -62,6 +63,7 @@ class App extends StatelessWidget {
               Get.put(HomeController());
               Get.put(HorarioController(app: AppController.to));
               Get.put(AgendaController(app: AppController.to));
+              Get.put(RelojController(app: AppController.to));
             })),
         GetPage(
           name: '/marcas',
@@ -91,9 +93,11 @@ class App extends StatelessWidget {
           page: () => EventoFormPage(),
         ),
         GetPage(
-          name: '/reloj',
-          page: () => RelojPage(),
-        ),
+            name: '/reloj',
+            page: () => RelojPage(),
+            binding: BindingsBuilder(() {
+              Get.put(RelojController(app: AppController.to));
+            }))
       ],
     );
   }

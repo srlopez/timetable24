@@ -15,7 +15,7 @@ class Actividad {
   String pie = '';
   Color color = Colors.grey.shade200;
 
-  Actividad({required this.dia, required marca, required this.minutos})
+  Actividad({required this.dia, required int marca, required this.minutos})
       : marcaInicial = marca,
         nHuecos = 1 {
     resetActividad();

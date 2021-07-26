@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../services/db_storagex.dart';
@@ -163,6 +165,25 @@ class AppController extends GetxController {
     minutosTotales = patron.fold(0.0, (total, act) => total + act.minutos);
   }
 
+  // Obtiene la actividad actual
+  Actividad? getActividadActual() {
+    var now = DateTime.now();
+    if (now.weekday > 5) return null;
+    var act = actividades[now.weekday - 1].firstWhere((act) {
+      var mIni = marcasHorarias[act.marcaInicial];
+      var mNow = Marca(now.hour, now.minute);
+      var duracion = act.minutos;
+      var diff = mNow.diff(mIni);
+      if (diff > 0 && diff <= duracion) return true;
+      return false;
+    });
+    return act.activo ? act : null;
+  }
+
+  // Marca getMarcaInicial(Actividad act) {
+  //   return marcasHorarias[act.marcaInicial];
+  // }
+
   // EVENTOS ==============================================
   var eventos = <Evento>[].obs;
   final db = Get.find<DbGetXStorage>();
@@ -192,10 +213,13 @@ class AppController extends GetxController {
     var activo = false;
     var hayFechas = false;
 
-    eventos.forEach((ent) {
-      if (!fecha.isBefore(ent.fInicio) && !fecha.isAfter(ent.fFin)) {
+    eventos.forEach((e) {
+      //print('$fecha ${e.fInicio} ${e.fFin}');
+
+      if (!fecha.isBefore(e.fInicio) && !fecha.isAfter(e.fFin)) {
         hayFechas = true;
-        activo |= ent.hayActividad;
+        activo |= e.hayActividad;
+        //print('activo $activo');
       }
     });
     if (hayFechas) return activo;
