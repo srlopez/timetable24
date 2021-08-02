@@ -27,34 +27,33 @@ class RelojController extends GetxController {
   // Storage
   final box = GetStorage();
   bWrite() =>
-      box.write('reloj', [scale.value, font.value, color.value, texto.value]);
+      box.write('reloj', [scale.value, font.value, color.value, mode.value]);
   bRead() {
     var values = box.read('reloj') ?? [0, 0, 0, 0];
-    scale.value = values[0];
-    font.value = values[1];
-    color.value = values[2];
-    texto.value = values[3];
+    scale.value = values[0]; // tamaño del Font
+    font.value = values[1]; // Tipo de Font
+    color.value = values[2]; // Color
+    mode.value = values[3]; // Hora CuentaAtras
   }
 
-  // hora resto
+  // hora / resto
   String _getTime() => DateFormat.Hms().format(DateTime.now());
   String formatResto(int total, int done) => "-${total - done}'";
+  String formatRestoEnSegundos() => '-${60 - int.parse(currentHMS[2])}"';
   var currentTime = '';
-  //var currentRest = '';
-
   var currentHMS = ['', '', ''].obs;
   var milliseconds = 1000;
-  var dots = ':';
-  var light = true;
+  var colon = ':';
+  var tictac = true;
 
   void setCurrentTime() {
-    var nextTime = _getTime().split(dots);
+    var nextTime = _getTime().split(colon);
     if (nextTime[2] == currentHMS[2]) return;
     currentHMS.value = nextTime;
-    currentTime = nextTime[0] + dots + nextTime[1];
-    light = !light;
-    textos[0] = currentTime;
-    textos[1] = currentTime;
+    currentTime = nextTime[0] + colon + nextTime[1];
+    tictac = !tictac;
+    modeTexts[0] = currentTime;
+    modeTexts[1] = currentTime;
   }
 
   void setTimer() =>
@@ -62,34 +61,6 @@ class RelojController extends GetxController {
         setCurrentTime();
         setActividad();
       });
-
-  // Actividad
-  var progresoData = ProgresoData.fromNull().obs;
-
-  void setActividad() {
-    var now = DateTime.now();
-
-    if (!app.esFechaConActividad(now)) {
-      // Dia marcado como sin actividad horaria
-      progresoData.value = ProgresoData.fromNull();
-      return;
-    }
-    var act = app.getActividadActual();
-    if (act == null) {
-      // No hay actividad en este momento
-      progresoData.value = ProgresoData.fromNull();
-      return;
-    }
-    var mNow = Marca(DateTime.now().hour, DateTime.now().minute);
-    var mIni = app.marcasHorarias[act.marcaInicial];
-    var mFin = app.marcasHorarias[act.marcaInicial + act.nHuecos];
-    var total = act.minutos;
-    var done = mNow.diff(mIni);
-
-    textos[1] = formatResto(total, done);
-    progresoData.value = ProgresoData(
-        start: mIni, end: mFin, total: total, done: done, color: act.color);
-  }
 
   // FORMATO ======
   // tamaño
@@ -104,7 +75,7 @@ class RelojController extends GetxController {
     bWrite();
   }
 
-  // tipo
+  // FUENTE =======
   var font = 0.obs;
   var fonts = [
     GoogleFonts.bebasNeue,
@@ -131,7 +102,7 @@ class RelojController extends GetxController {
     bWrite();
   }
 
-  // color
+  // COLOR =======
   var color = 0.obs;
   var colores = [
     Colors.white,
@@ -155,12 +126,45 @@ class RelojController extends GetxController {
     bWrite();
   }
 
-  // Hora o resto de actividad
-  var texto = 0.obs;
-  var textos = ['', ''];
-  void nextText() {
-    texto.value = (texto.value + 1) % 2;
+  // MODE ======= Hora o resto de actividad
+  var mode = 0.obs;
+  var modeTexts = ['', ''];
+  void nextMode() {
+    mode.value = (mode.value + 1) % 2;
     bWrite();
+  }
+
+  // Actividad / ProgressData ================
+  var progresoData = ProgresoData.fromNull().obs;
+
+  void setActividad() {
+    var now = DateTime.now();
+
+    if (!app.esFechaConActividad(now)) {
+      // Dia marcado como sin actividad horaria
+      setNoActividad();
+      return;
+    }
+    var act = app.getActividadActual();
+    if (act == null) {
+      setNoActividad();
+      return;
+    }
+    var mNow = Marca(DateTime.now().hour, DateTime.now().minute);
+    var mIni = app.marcasHorarias[act.marcaInicial];
+    var mFin = app.marcasHorarias[act.marcaInicial + act.nHuecos];
+    var total = act.minutos;
+    var done = mNow.diff(mIni) - 1; // -1 Para no resentar el minuto Cero
+
+    modeTexts[1] = formatResto(total, done);
+    if (done == total - 1) modeTexts[1] = formatRestoEnSegundos();
+    progresoData.value = ProgresoData(
+        start: mIni, end: mFin, total: total, done: done, color: act.color);
+  }
+
+  void setNoActividad() {
+    progresoData.value = ProgresoData.fromNull();
+    mode.value = 0;
   }
 }
 

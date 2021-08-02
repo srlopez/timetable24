@@ -30,12 +30,14 @@ class RelojPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  // TEXTO CENTRAL
+                  // TEXTO CENTRAL: HORA /COUNTDOWN
                   Expanded(
                     child: Obx(() {
-                      final value = _.textos[_.texto.value];
-                      final p = !pd.value.visible || _.texto.value == 0 ? 2 : 0;
-                      return _buildReloj(context, value, p);
+                      final textoModo = _.modeTexts[_.mode.value];
+                      final iTicTac =
+                          // Dos punto / Signo menos
+                          !pd.value.visible || _.mode.value == 0 ? 2 : 0;
+                      return _buildReloj(context, textoModo, iTicTac);
                     }),
                   ),
                   // BARRA DE PROGRESO
@@ -55,6 +57,7 @@ class RelojPage extends StatelessWidget {
 
   Widget _buildBotoneraFormato() {
     final _ = RelojController.to;
+    final pd = _.progresoData;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,8 +67,10 @@ class RelojPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             //https://en.wikibooks.org/wiki/Unicode/List_of_useful_symbols
-            Obx(() => BText(['12:00', _.formatResto(40, 10)][_.texto.value],
-                onPressed: _.nextText)),
+            Obx(() => pd.value.visible
+                ? BText([_.formatResto(40, 10), '12:00'][_.mode.value],
+                    onPressed: _.nextMode)
+                : Container()),
             BText('▼▲', onPressed: _.nextScale),
             BText('aℬαβ', onPressed: _.nextFont),
             Obx(() => BText('⓰', //'⬤'
@@ -90,17 +95,17 @@ class RelojPage extends StatelessWidget {
         Theme.of(context).textTheme.bodyText1!.copyWith(color: pd.color);
 
     var height = 30.0;
-    var resto = _.formatResto(pd.total, pd.done);
+    var textoCentral = [_.modeTexts[1], _.modeTexts[0]][_.mode.value];
 
     var decoIni = BoxDecoration(
-      color: lighten(pd.color, .3),
+      color: darken(pd.color, 0),
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(height / 2),
           bottomLeft: Radius.circular(height / 2)),
     );
 
     var decoFin = BoxDecoration(
-        color: darken(pd.color, 0),
+        color: lighten(pd.color, .3),
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(height / 2),
             bottomRight: Radius.circular(height / 2)));
@@ -122,21 +127,15 @@ class RelojPage extends StatelessWidget {
               children: [
                 Expanded(
                     flex: pd.done,
-                    child: Container(
-                        height: height,
-                        //color: darken(pd.color, 0),
-                        decoration: decoIni)),
+                    child: Container(height: height, decoration: decoIni)),
                 Expanded(
                     flex: pd.total - pd.done,
-                    child: Container(
-                        height: height,
-                        //color: lighten(pd.color, .3),
-                        decoration: decoFin)),
+                    child: Container(height: height, decoration: decoFin)),
               ],
             ),
             Center(
               child: Text(
-                resto,
+                textoCentral,
                 style: font(textStyle: fStyle.copyWith(color: Colors.black)),
                 textScaleFactor: 2,
               ),
@@ -154,7 +153,7 @@ class RelojPage extends StatelessWidget {
     );
   }
 
-  Widget _buildReloj(BuildContext context, String value, int iParpadeo) {
+  Widget _buildReloj(BuildContext context, String value, int iTicTac) {
     final _ = RelojController.to;
 
     var sFactor = _.scales[_.scale.value];
@@ -163,7 +162,7 @@ class RelojPage extends StatelessWidget {
 
     var fStyle = Theme.of(context).textTheme.bodyText1!.copyWith(color: color);
     var fStyleDots = fStyle.copyWith(
-        color: _.light
+        color: _.tictac
             ? color
             : _.color.value == 0
                 ? darken(color, .2)
@@ -173,13 +172,13 @@ class RelojPage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (iParpadeo > 0)
-            Text(value.substring(0, iParpadeo),
+          if (iTicTac > 0)
+            Text(value.substring(0, iTicTac),
                 style: font(textStyle: fStyle), textScaleFactor: sFactor),
-          if (iParpadeo > -1)
-            Text(value.substring(iParpadeo, iParpadeo + 1),
+          if (iTicTac > -1)
+            Text(value.substring(iTicTac, iTicTac + 1),
                 style: font(textStyle: fStyleDots), textScaleFactor: sFactor),
-          Text(value.substring(iParpadeo + 1),
+          Text(value.substring(iTicTac + 1),
               style: font(textStyle: fStyle),
               textScaleFactor: sFactor,
               overflow: TextOverflow.clip),
