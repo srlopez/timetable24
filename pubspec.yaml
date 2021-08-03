@@ -34,6 +34,8 @@ dependencies:
   date_time_picker: ^2.0.0
   google_fonts: ^2.1.0
   wakelock: ^0.5.2
+  tuple: ^2.0.0
+
 
 
 dev_dependencies:

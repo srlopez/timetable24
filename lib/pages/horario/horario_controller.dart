@@ -15,11 +15,6 @@ class HorarioController extends GetxController {
     setPaginaEnCurso();
   }
 
-  // Actividad crearHueco(
-  //     {required int dia, required int marca, required int minutos}) {
-  //   return Actividad(dia: dia, minutos: minutos, marca: marca);
-  // }
-
   activar(Actividad hueco) {
     // Si no está Inactivo volvemos
     if (hueco.activo) return;
@@ -33,6 +28,7 @@ class HorarioController extends GetxController {
     // Si no está activo volvemos
     if (!actividad.activo) return;
     if (actividad.nHuecos > 1) return;
+
     //
     actividad.resetActividad();
     update();

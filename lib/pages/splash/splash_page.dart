@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../global/app_controller.dart';
@@ -10,9 +11,18 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        backwardsCompatibility: false,
+        systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor:
+                //Colors.transparent
+                Theme.of(context).canvasColor),
+        //foregroundColor: Theme.of(context).accentColor,
+      ),
       body: Center(
         child: Obx(() => app.nLoading.value == 0
-            ? Text('Done')
+            ? Text('Hecho')
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

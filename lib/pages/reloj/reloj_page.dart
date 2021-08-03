@@ -15,48 +15,51 @@ class RelojPage extends StatelessWidget {
     final pd = _.progresoData;
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0,
-        backwardsCompatibility: false,
-        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
-      ),
-      body: Container(
-        color: Colors.black,
-        child: RotatedBox(
-          quarterTurns: 1,
-          child: Stack(
-            children: [
-              // HORA
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  // TEXTO CENTRAL: HORA /COUNTDOWN
-                  Expanded(
-                    child: Obx(() {
-                      final textoModo = _.modeTexts[_.mode.value];
-                      final iTicTac =
-                          // Dos punto / Signo menos
-                          !pd.value.visible || _.mode.value == 0 ? 2 : 0;
-                      return _buildReloj(context, textoModo, iTicTac);
-                    }),
-                  ),
-                  // BARRA DE PROGRESO
-                  Obx(() => pd.value.visible
-                      ? _buildProgressBar(context, pd.value)
-                      : Container()),
-                ],
-              ),
-              // FORMATO
-              _buildBotoneraFormato(),
-            ],
-          ),
+        appBar: AppBar(
+          toolbarHeight: 0,
+          backwardsCompatibility: false,
+          systemOverlayStyle:
+              SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.black),
+          //foregroundColor: Colors.red,
+          //toolbarTextStyle: TextStyle(color: Colors.red),
         ),
-      ),
-    );
+        body: Container(
+          color: Colors.black,
+          child: RotatedBox(
+            quarterTurns: 1,
+            child: Stack(
+              children: [
+                // HORA
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    // TEXTO CENTRAL: HORA /COUNTDOWN
+                    Expanded(
+                      child: Obx(() {
+                        final textoModo = _.modeTexts[_.mode.value];
+                        final iTicTac =
+                            // Dos punto / Signo menos
+                            !pd.value.visible || _.mode.value == 0 ? 2 : 0;
+                        return _buildReloj(context, textoModo, iTicTac);
+                      }),
+                    ),
+                    // BARRA DE PROGRESO
+                    Obx(() => pd.value.visible
+                        ? _buildProgressBar(context, pd.value)
+                        : Container()),
+                  ],
+                ),
+                // FORMATO
+                _buildBotoneraFormato(),
+              ],
+            ),
+          ),
+        ));
   }
 
   Widget _buildBotoneraFormato() {
     final _ = RelojController.to;
+
     final pd = _.progresoData;
 
     return Column(
@@ -66,17 +69,17 @@ class RelojPage extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            //https://en.wikibooks.org/wiki/Unicode/List_of_useful_symbols
+            Spacer(),
             Obx(() => pd.value.visible
-                ? BText([_.formatResto(40, 10), '12:00'][_.mode.value],
+                ? Simple([_.formatResto(26, 10), '16:00'][_.mode.value],
                     onPressed: _.nextMode)
                 : Container()),
-            BText('▼▲', onPressed: _.nextScale),
-            BText('aℬαβ', onPressed: _.nextFont),
-            Obx(() => BText('⓰', //'⬤'
+            Obx(() => Simple('⬤', //'⓰'
                 onPressed: _.nextColor,
                 color: _.colores[(_.color.value + 1) % _.colores.length])),
-            //     BText('Back->', onPressed: () => Get.back()),
+            Simple('▼|▲', onPressed: _.nextScale),
+            Simple('ℱont', onPressed: _.nextFont),
+            Simple(Icons.power_settings_new, onPressed: Get.back)
           ],
         ),
         Spacer(),
@@ -171,6 +174,8 @@ class RelojPage extends StatelessWidget {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.baseline,
+        // textBaseline: TextBaseline.ideographic,
         children: [
           if (iTicTac > 0)
             Text(value.substring(0, iTicTac),
@@ -188,21 +193,27 @@ class RelojPage extends StatelessWidget {
   }
 }
 
-class BText extends StatelessWidget {
+class Simple extends StatelessWidget {
   final void Function()? onPressed;
-  final String text;
+  final dynamic data;
   final Color? color;
 
-  const BText(this.text, {this.onPressed, this.color, Key? key})
+  const Simple(this.data, {this.onPressed, this.color, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: onPressed ?? () {},
-        child: Text(
-          text,
-          style: TextStyle(color: color ?? Colors.grey),
-        ));
+    return data is IconData
+        ? IconButton(
+            onPressed: onPressed ?? () {},
+            icon: Icon(data),
+            iconSize: 16,
+            color: color ?? Colors.grey)
+        : TextButton(
+            onPressed: onPressed ?? () {},
+            child: Text(
+              data,
+              style: TextStyle(color: color ?? Colors.grey),
+            ));
   }
 }

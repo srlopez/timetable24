@@ -59,7 +59,7 @@ class AppController extends GetxController {
         dl.loading = false;
         dl.done = true;
         nLoading.value--;
-        print('$data en memoria');
+        print('$data cargado en memoria...');
       });
     });
   }

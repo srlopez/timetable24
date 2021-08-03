@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:timetable24/global/app_utils.dart';
 import '../../models/evento.dart';
@@ -41,14 +40,18 @@ class HorarioPage extends StatelessWidget {
     var menu = ['Marcas horarias', 'Reiniciar actividades'];
 
     return AppBar(
-      backwardsCompatibility: false,
-      systemOverlayStyle:
-          SystemUiOverlayStyle(statusBarColor: Theme.of(context).canvasColor),
+      // backwardsCompatibility: false,
+      // systemOverlayStyle: SystemUiOverlayStyle(
+      //     statusBarColor:
+      //         //Colors.transparent
+      //         Theme.of(context).accentColor
+      //     //Theme.of(context).canvasColor
+      //     ),
+      foregroundColor: Theme.of(context).accentColor,
       title: Text(
         '${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
         //style: Theme.of(context).textTheme.headline5
       ),
-      foregroundColor: Theme.of(context).accentColor,
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.today),

@@ -11,12 +11,16 @@ class ColorPicker extends StatefulWidget {
     required this.context,
     required this.onChanged,
     required this.currentColor,
+    required this.onForceSetNewColor,
+
     // this.boxesHeight = baseHeight,
     // this.spacing = baseSpacing,
     // this.margin = baseMargin,
   });
   final BuildContext context;
   final Function onChanged;
+  final Function onForceSetNewColor;
+
   // final double boxesHeight;
   // final double spacing;
   // final double margin;
@@ -34,6 +38,11 @@ class ColorPickerState extends State<ColorPicker> {
     super.initState();
     _initColors();
     _selectColor(widget.context, widget.currentColor);
+    widget.onForceSetNewColor((Color color) {
+      //Indico una funcion que se ejecutará cuando sea invocada desde el padre
+      // y obloga a refrescarse
+      _selectColor(context, color);
+    });
   }
 
   void _selectColor(BuildContext context, Color color) {

@@ -11,6 +11,7 @@ import 'pages/actividad/actividad_form_page.dart';
 import 'pages/agenda/agenda_controller.dart';
 import 'pages/agenda/agenda_page.dart';
 import 'pages/evento/evento_form_page.dart';
+import 'pages/home/home_controller.dart';
 import 'pages/home/home_page.dart';
 import 'pages/horario/horario_controller.dart';
 import 'pages/horario/horario_page.dart';
@@ -57,14 +58,15 @@ class App extends StatelessWidget {
           }),
         ),
         GetPage(
-            name: '/home',
-            page: () => HomePage(),
-            binding: BindingsBuilder(() {
-              Get.put(HomeController());
-              Get.put(HorarioController(app: AppController.to));
-              Get.put(AgendaController(app: AppController.to));
-              Get.lazyPut(() => RelojController(app: AppController.to));
-            })),
+          name: '/home',
+          page: () => HomePage(),
+          binding: BindingsBuilder(() {
+            Get.put(HomeController());
+            Get.put(HorarioController(app: AppController.to));
+            Get.put(AgendaController(app: AppController.to));
+            Get.lazyPut(() => RelojController(app: AppController.to));
+          }),
+        ),
         GetPage(
           name: '/marcas',
           page: () => MarcasPage(),
@@ -93,11 +95,12 @@ class App extends StatelessWidget {
           page: () => EventoFormPage(),
         ),
         GetPage(
-            name: '/reloj',
-            page: () => RelojPage(),
-            binding: BindingsBuilder(() {
-              Get.put(RelojController(app: AppController.to));
-            }))
+          name: '/reloj',
+          page: () => RelojPage(),
+          binding: BindingsBuilder(() {
+            Get.put(RelojController(app: AppController.to));
+          }),
+        )
       ],
     );
   }

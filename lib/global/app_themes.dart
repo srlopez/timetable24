@@ -68,9 +68,15 @@ ThemeData light() {
 ThemeData dark() {
   return ThemeData(
     brightness: Brightness.dark,
-    primaryColor: Colors.black, //.grey[900],
-    accentColor: Colors.white70,
+
     textTheme: darkTextTheme,
     appBarTheme: appBarTheme,
+    //
+    primaryColor: Colors.black, //.grey[900],
+    accentColor: Colors.white70,
+    //
+    //canvasColor: Colors.black87,
+    //dividerColor: Colors.grey.shade100,
+    //cardColor: Colors.grey.shade600,
   );
 }

@@ -24,6 +24,24 @@ class RelojController extends GetxController {
     super.onInit();
   }
 
+  // @override
+  // void onReady() {
+  //   print('RelojController onReady');
+  //   super.onReady();
+  // }
+
+  // @override
+  // void onClose() {
+  //   print('RelojController onClose');
+  //   super.onClose();
+  // }
+
+  @override
+  InternalFinalCallback<void> get onDelete {
+    print('RelojController onDelete');
+    return super.onDelete;
+  }
+
   // Storage
   final box = GetStorage();
   bWrite() =>

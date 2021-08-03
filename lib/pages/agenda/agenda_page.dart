@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../global/app_utils.dart';
 import '../../models/evento.dart';
@@ -117,11 +116,16 @@ class AgendaPage extends StatelessWidget {
     AgendaController _,
   ) =>
       AppBar(
-        backwardsCompatibility: false,
-        systemOverlayStyle:
-            SystemUiOverlayStyle(statusBarColor: Theme.of(context).canvasColor),
-        title: Text('Agenda ${cursoEscolar()}'),
+        // backwardsCompatibility: false,
+        // systemOverlayStyle:
+        //     SystemUiOverlayStyle(statusBarColor: Theme.of(context).accentColor
+
+        //         //Colors.transparent
+        //         //Theme.of(context).canvasColor
+        //         ),
+
         foregroundColor: Theme.of(context).accentColor,
+        title: Text('Agenda ${cursoEscolar()}'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.today),

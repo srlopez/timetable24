@@ -16,7 +16,7 @@ class MarcasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Recogemos las marcas del Controlador global
-    _.setMarcas(app.marcasHorarias.value);
+    _.setMarcas(app.marcasHorarias);
     // Establecemos las variables y funciones desde el controlador
     var marcas = _.marcas;
     var limSup = _.mSuperior;
@@ -60,9 +60,9 @@ class MarcasPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(width: 15),
-            ColumnaDeMarcas(marcas: marcasHorarias.value),
+            ColumnaDeMarcas(marcas: marcasHorarias),
             SizedBox(width: 5),
-            ColumnaDeEspacios(marcas: marcasHorarias.value),
+            ColumnaDeEspacios(marcas: marcasHorarias),
             SizedBox(width: 25),
           ],
         ),
