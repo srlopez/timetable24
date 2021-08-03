@@ -318,9 +318,10 @@ class WidgetDiaItem extends StatelessWidget {
     const gap = 8.0;
 
     const eventoIcon = [
-      Icons.stop_circle_outlined, //play_arrow_rounded not_started
+      Icons
+          .arrow_upward, //stop_circle_outlined, //play_arrow_rounded not_started
       Icons.circle, //circle_outlined, //Icons.lightbulb_outline_sharp,
-      Icons.play_circle_outlined, //arrow_back_ios_new_sharp,
+      Icons.arrow_downward, //play_circle_outlined, //arrow_back_ios_new_sharp,
     ];
 
     return Row(
