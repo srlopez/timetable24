@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:timetable24/global/app_controller.dart';
 import 'package:timetable24/models/marca_horaria.dart';
+import 'package:wakelock/wakelock.dart';
 
 class RelojController extends GetxController {
   AppController app;
@@ -24,17 +25,19 @@ class RelojController extends GetxController {
     super.onInit();
   }
 
-  // @override
-  // void onReady() {
-  //   print('RelojController onReady');
-  //   super.onReady();
-  // }
+  @override
+  void onReady() {
+    //print('RelojController onReady');
+    Wakelock.enable();
+    super.onReady();
+  }
 
-  // @override
-  // void onClose() {
-  //   print('RelojController onClose');
-  //   super.onClose();
-  // }
+  @override
+  void onClose() {
+    //print('RelojController onClose');
+    Wakelock.disable();
+    super.onClose();
+  }
 
   @override
   InternalFinalCallback<void> get onDelete {

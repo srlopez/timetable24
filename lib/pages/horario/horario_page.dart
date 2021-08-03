@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:timetable24/global/app_utils.dart';
 import '../../models/evento.dart';
@@ -47,6 +48,7 @@ class HorarioPage extends StatelessWidget {
       //         Theme.of(context).accentColor
       //     //Theme.of(context).canvasColor
       //     ),
+
       foregroundColor: Theme.of(context).accentColor,
       title: Text(
         '${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
@@ -249,9 +251,6 @@ class DiaFooter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           for (var c = 0; c < tipoDia.length; c++) ...[
-            // if (widget.tipoDia[c] == Categoria.Destacado_L1 ||
-            //     widget.tipoDia[c] ==
-            //         Categoria.Personal_NL1) //PERSONAL Y DESTACADO
             Container(
               padding: EdgeInsets.fromLTRB(0, 1, 0, 1),
               width: double.infinity,
