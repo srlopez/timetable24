@@ -39,17 +39,18 @@ class HorarioPage extends StatelessWidget {
     PageController horarioPageController,
   ) {
     var menu = ['Marcas horarias', 'Reiniciar actividades'];
+    var brightness = MediaQuery.of(context).platformBrightness;
 
     return AppBar(
-      // backwardsCompatibility: false,
-      // systemOverlayStyle: SystemUiOverlayStyle(
-      //     statusBarColor:
-      //         //Colors.transparent
-      //         Theme.of(context).accentColor
-      //     //Theme.of(context).canvasColor
-      //     ),
-
+      backwardsCompatibility: false,
+      systemOverlayStyle: brightness == Brightness.dark
+          ? SystemUiOverlayStyle.dark
+              .copyWith(statusBarColor: Theme.of(context).canvasColor)
+          : SystemUiOverlayStyle.light
+              .copyWith(statusBarColor: Theme.of(context).canvasColor),
+      //backgroundColor: Theme.of(context).canvasColor,
       foregroundColor: Theme.of(context).accentColor,
+
       title: Text(
         '${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
         //style: Theme.of(context).textTheme.headline5

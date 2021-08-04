@@ -60,9 +60,9 @@ class MarcasPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(width: 15),
-            ColumnaDeMarcas(marcas: marcasHorarias),
+            ColumnaDeMarcas(marcas: marcasHorarias.value),
             SizedBox(width: 5),
-            ColumnaDeEspacios(marcas: marcasHorarias),
+            ColumnaDeEspacios(marcas: marcasHorarias.value),
             SizedBox(width: 25),
           ],
         ),

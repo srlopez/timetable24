@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:timetable24/global/app_controller.dart';
 import 'package:timetable24/models/marca_horaria.dart';
 import 'package:wakelock/wakelock.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
 class RelojController extends GetxController {
   AppController app;
@@ -17,6 +18,7 @@ class RelojController extends GetxController {
 
   @override
   void onInit() {
+    loadFonts();
     setScales();
     setCurrentTime();
     setTimer();
@@ -27,34 +29,29 @@ class RelojController extends GetxController {
 
   @override
   void onReady() {
-    //print('RelojController onReady');
+    //print('RelojController onReady Wakelock.enable()');
     Wakelock.enable();
     super.onReady();
   }
 
   @override
   void onClose() {
-    //print('RelojController onClose');
+    //print('RelojController onClose  Wakelock.disable()');
     Wakelock.disable();
     super.onClose();
   }
 
-  @override
-  InternalFinalCallback<void> get onDelete {
-    print('RelojController onDelete');
-    return super.onDelete;
-  }
-
   // Storage
   final box = GetStorage();
-  bWrite() =>
-      box.write('reloj', [scale.value, font.value, color.value, mode.value]);
+  bWrite() => box.write(
+      'reloj', [scale.value, font.value, color.value, mode.value, alarm.value]);
   bRead() {
-    var values = box.read('reloj') ?? [0, 0, 0, 0];
+    var values = box.read('reloj') ?? [0, 0, 0, 0, 0];
     scale.value = values[0]; // tamaño del Font
     font.value = values[1]; // Tipo de Font
     color.value = values[2]; // Color
-    mode.value = values[3]; // Hora CuentaAtras
+    mode.value = values[3]; // Hora/CuentaAtras
+    alarm.value = values[4]; // On/off
   }
 
   // hora / resto
@@ -99,29 +96,65 @@ class RelojController extends GetxController {
   // FUENTE =======
   var font = 0.obs;
   var fonts = [
+    //1
     GoogleFonts.bebasNeue,
+    GoogleFonts.oswald,
+    GoogleFonts.poppins,
+    GoogleFonts.fjallaOne,
+    GoogleFonts.righteous,
+    //2
     GoogleFonts.shanti,
-    GoogleFonts.lato, //
+    GoogleFonts.lato,
     GoogleFonts.comfortaa,
     GoogleFonts.coda,
     GoogleFonts.voces,
-    GoogleFonts.bellota,
-    GoogleFonts.oswald,
-    GoogleFonts.poppins,
-
-    //GoogleFonts.flamenco, //
-    //GoogleFonts.inconsolata,
-    //GoogleFonts.playfairDisplay,
-    //GoogleFonts.anton,
-    //GoogleFonts.barlowCondensed,
-    //GoogleFonts.teko,
-    //GoogleFonts.abrilFatface,
-    //GoogleFonts.creteRound,
+    GoogleFonts.raleway,
+    GoogleFonts.mako,
+    GoogleFonts.encodeSansCondensed,
+//4
+    GoogleFonts.dmSerifDisplay,
+    GoogleFonts.vidaloka,
+    GoogleFonts.trirong,
+    //5
+    GoogleFonts.merriweather,
+    GoogleFonts.frankRuhlLibre,
+    GoogleFonts.crimsonPro,
+    GoogleFonts.adamina,
+    GoogleFonts.songMyung,
+    //6
+    GoogleFonts.nanumMyeongjo,
+    GoogleFonts.cinzel,
+    GoogleFonts.bellefair,
+    //7
+    GoogleFonts.yanoneKaffeesatz,
+    GoogleFonts.electrolize,
+    GoogleFonts.nixieOne,
+    GoogleFonts.kosugi,
+    GoogleFonts.emilysCandy,
+    GoogleFonts.ralewayDots,
+    GoogleFonts.zcoolQingKeHuangYou,
+    GoogleFonts.rationale,
+    GoogleFonts.londrinaShadow,
   ];
   void nextFont() {
     font.value = (font.value + 1) % fonts.length;
     bWrite();
+    //print('font ${font.value} ${fontIName(font.value)}');
   }
+
+  void loadFonts() {
+    // Google Fonts muestra el font por defecto si éste no está cargado
+    // El efecto es feo, así que cargamos los fonts antes
+    for (var i = 0; i < fonts.length; i++) {
+      print('loading font ${i + 1}/${fonts.length} ${fontName(fonts[i])}...');
+
+      font();
+    }
+    fonts.forEach((font) {});
+  }
+
+  //String fontIName(int i) => fontName(fonts[i]);
+  String fontName(Function gf) => gf.toString().split(":")[1].split(' ').last;
 
   // COLOR =======
   var color = 0.obs;
@@ -155,6 +188,24 @@ class RelojController extends GetxController {
     bWrite();
   }
 
+  // ALARMA ========
+  var alarm = 0.obs;
+  var playing = false;
+  void setAlarm() {
+    alarm.value = (alarm.value + 1) % 2;
+    bWrite();
+  }
+
+  void playSound() {
+    if (!playing) FlutterRingtonePlayer.playAlarm(asAlarm: true);
+    playing = true;
+  }
+
+  void stopSound() {
+    FlutterRingtonePlayer.stop();
+    playing = false;
+  }
+
   // Actividad / ProgressData ================
   var progresoData = ProgresoData.fromNull().obs;
 
@@ -178,7 +229,13 @@ class RelojController extends GetxController {
     var done = mNow.diff(mIni) - 1; // -1 Para no resentar el minuto Cero
 
     modeTexts[1] = formatResto(total, done);
-    if (done == total - 1) modeTexts[1] = formatRestoEnSegundos();
+    if (done == total - 1) {
+      modeTexts[1] = formatRestoEnSegundos();
+      if (alarm.value == 1)
+        playSound();
+      else
+        stopSound();
+    }
     progresoData.value = ProgresoData(
         start: mIni, end: mFin, total: total, done: done, color: act.color);
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../global/app_utils.dart';
 import '../../models/evento.dart';
@@ -114,44 +115,46 @@ class AgendaPage extends StatelessWidget {
   AppBar _buildAppBar(
     BuildContext context,
     AgendaController _,
-  ) =>
-      AppBar(
-        // backwardsCompatibility: false,
-        // systemOverlayStyle:
-        //     SystemUiOverlayStyle(statusBarColor: Theme.of(context).accentColor
+  ) {
+    var brightness = MediaQuery.of(context).platformBrightness;
 
-        //         //Colors.transparent
-        //         //Theme.of(context).canvasColor
-        //         ),
+    return AppBar(
+      backwardsCompatibility: false,
+      systemOverlayStyle: brightness == Brightness.dark
+          ? SystemUiOverlayStyle.dark
+              .copyWith(statusBarColor: Theme.of(context).canvasColor)
+          : SystemUiOverlayStyle.light
+              .copyWith(statusBarColor: Theme.of(context).canvasColor),
+      //backgroundColor: Theme.of(context).canvasColor,
+      foregroundColor: Theme.of(context).accentColor,
+      title: Text('Agenda ${cursoEscolar()}'),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.today),
+          onPressed: (() => Scrollable.ensureVisible(
+              semanaActualKey.currentContext ?? context)),
+          //color: Theme.of(context).dividerColor,
+        ),
+        PopupMenuButton<String>(
+          onSelected: ((value) async {
+            //if (value == 'Reload') _.inicializarItems();
+            if (value == 'Inicializar') _.deleteAll();
+            //if (value == 'Ver reloj') await Get.toNamed('/reloj');
 
-        foregroundColor: Theme.of(context).accentColor,
-        title: Text('Agenda ${cursoEscolar()}'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.today),
-            onPressed: (() => Scrollable.ensureVisible(
-                semanaActualKey.currentContext ?? context)),
-            //color: Theme.of(context).dividerColor,
-          ),
-          PopupMenuButton<String>(
-            onSelected: ((value) async {
-              //if (value == 'Reload') _.inicializarItems();
-              if (value == 'Inicializar') _.deleteAll();
-              //if (value == 'Ver reloj') await Get.toNamed('/reloj');
-
-              _.update();
-            }),
-            itemBuilder: (BuildContext context) {
-              return {'Inicializar'}.map((String choice) {
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-          ),
-        ],
-      );
+            _.update();
+          }),
+          itemBuilder: (BuildContext context) {
+            return {'Inicializar'}.map((String choice) {
+              return PopupMenuItem<String>(
+                value: choice,
+                child: Text(choice),
+              );
+            }).toList();
+          },
+        ),
+      ],
+    );
+  }
 }
 
 class WidgetSemana extends StatelessWidget {

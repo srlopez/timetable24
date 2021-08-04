@@ -33,7 +33,7 @@ class RelojPage extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // TEXTO CENTRAL: HORA /COUNTDOWN
+                    // TEXTO CENTRAL: HORA/COUNTDOWN
                     Expanded(
                       child: Obx(() {
                         final textoModo = _.modeTexts[_.mode.value];
@@ -44,9 +44,8 @@ class RelojPage extends StatelessWidget {
                       }),
                     ),
                     // BARRA DE PROGRESO
-                    Obx(() => pd.value.visible
-                        ? _buildProgressBar(context, pd.value)
-                        : Container()),
+                    if (pd.value.visible)
+                      Obx(() => _buildProgressBar(context, pd.value)),
                   ],
                 ),
                 // FORMATO
@@ -69,11 +68,18 @@ class RelojPage extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
+            Obx(() => Simple(_.fontName(_.fonts[_.font.value]))),
             Spacer(),
-            Obx(() => pd.value.visible
-                ? Simple([_.formatResto(26, 10), '16:00'][_.mode.value],
-                    onPressed: _.nextMode)
-                : Container()),
+            if (pd.value.visible) ...[
+              Obx(() => Simple(
+                  [
+                    Icons.notifications_off,
+                    Icons.notifications_on
+                  ][_.alarm.value],
+                  onPressed: _.setAlarm)),
+              Obx(() => Simple([_.formatResto(25, 10), '12:00'][_.mode.value],
+                  onPressed: _.nextMode)),
+            ],
             Obx(() => Simple('⬤', //'⓰'
                 onPressed: _.nextColor,
                 color: _.colores[(_.color.value + 1) % _.colores.length])),
@@ -100,18 +106,17 @@ class RelojPage extends StatelessWidget {
     var height = 30.0;
     var textoCentral = [_.modeTexts[1], _.modeTexts[0]][_.mode.value];
 
-    var decoIni = BoxDecoration(
-      color: darken(pd.color, 0),
-      borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(height / 2),
-          bottomLeft: Radius.circular(height / 2)),
-    );
+    var done = pd.done * 60 + int.parse(_.currentHMS[2]);
+    var notdone = (pd.total - pd.done) * 60 - int.parse(_.currentHMS[2]);
 
-    var decoFin = BoxDecoration(
-        color: lighten(pd.color, .3),
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(height / 2),
-            bottomRight: Radius.circular(height / 2)));
+    var decoProgressBar = BoxDecoration(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(height / 2),
+        bottomLeft: Radius.circular(height / 2),
+        topRight: Radius.circular(height / 2),
+        bottomRight: Radius.circular(height / 2),
+      ),
+    );
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,15 +131,22 @@ class RelojPage extends StatelessWidget {
         Expanded(
             child: Stack(
           children: [
-            Row(
-              children: [
-                Expanded(
-                    flex: pd.done,
-                    child: Container(height: height, decoration: decoIni)),
-                Expanded(
-                    flex: pd.total - pd.done,
-                    child: Container(height: height, decoration: decoFin)),
-              ],
+            Container(
+              decoration: decoProgressBar,
+              height: height,
+              clipBehavior: Clip.hardEdge,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: done,
+                    child: Container(color: darken(pd.color, 0)),
+                  ),
+                  Expanded(
+                    flex: notdone,
+                    child: Container(color: lighten(pd.color, .3)),
+                  ),
+                ],
+              ),
             ),
             Center(
               child: Text(
@@ -174,7 +186,7 @@ class RelojPage extends StatelessWidget {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.baseline,
+        // crossAxisAlignment: CrossAxisAlignment.end,
         // textBaseline: TextBaseline.ideographic,
         children: [
           if (iTicTac > 0)
