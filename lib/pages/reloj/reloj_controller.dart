@@ -202,6 +202,7 @@ class RelojController extends GetxController {
   }
 
   void stopSound() {
+    if (!playing) return;
     FlutterRingtonePlayer.stop();
     playing = false;
   }
@@ -215,11 +216,13 @@ class RelojController extends GetxController {
     if (!app.esFechaConActividad(now)) {
       // Dia marcado como sin actividad horaria
       setNoActividad();
+      stopSound();
       return;
     }
     var act = app.getActividadActual();
     if (act == null) {
       setNoActividad();
+      stopSound();
       return;
     }
     var mNow = Marca(DateTime.now().hour, DateTime.now().minute);
@@ -229,13 +232,19 @@ class RelojController extends GetxController {
     var done = mNow.diff(mIni) - 1; // -1 Para no resentar el minuto Cero
 
     modeTexts[1] = formatResto(total, done);
+
     if (done == total - 1) {
+      // Ultimo minuto
       modeTexts[1] = formatRestoEnSegundos();
       if (alarm.value == 1)
         playSound();
       else
         stopSound();
+    } else {
+      // No es el ultimo minuto
+      stopSound();
     }
+
     progresoData.value = ProgresoData(
         start: mIni, end: mFin, total: total, done: done, color: act.color);
   }
