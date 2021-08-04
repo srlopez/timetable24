@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
+   sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4859428"
+     inkscape:cx="197.85419"
+     inkscape:cy="598.94636"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="-175.11377"
+       y="384.26271"
+       width="151.04848"
+       height="57.729684"
+       id="rect13569" />
+    <rect
+       x="-175.11377"
+       y="384.2627"
+       width="151.04848"
+       height="57.729683"
+       id="rect13569-3" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="opacity:0.9;fill:#62bee7;fill-opacity:1;stroke-width:0.702"
+       id="path68103"
+       cx="59.234673"
+       cy="185.66861"
+       r="41.735352"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#e3dbdb;fill-opacity:1;stroke-width:4.64676"
+       id="rect67206-0-2"
+       width="38.784206"
+       height="53.785748"
+       x="39.252785"
+       y="159.26329"
+       ry="2.2441549"
+       inkscape:transform-center-x="-97.46078"
+       inkscape:transform-center-y="-18.698908"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#ffcc00;stroke-width:0.471252"
+       id="rect120"
+       width="58.838306"
+       height="113.07494"
+       x="-56.687561"
+       y="88.06179"
+       inkscape:export-filename="/home/santi/Desktop/splash.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-1.1141906,57.620191)"
+       id="text13567-4"
+       style="font-size:24px;line-height:0.95;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect13569-3)"
+       x="85.300026"
+       y="0"
+       inkscape:export-filename="/home/santi/Desktop/splash.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="-144.45996"
+         y="402.73021"
+         id="tspan73352"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'Roboto Condensed,  Bold'"
+           id="tspan73350">¡Cada día </tspan></tspan><tspan
+         x="-130.2627"
+         y="425.5302"
+         id="tspan73356"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'Roboto Condensed,  Bold'"
+           id="tspan73354">mejor!</tspan></tspan></text>
+    <g
+       id="g49263"
+       transform="translate(-0.14924992,-11.14486)"
+       inkscape:export-filename="/home/santi/Desktop/splash.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         d="m -21.084429,147.53294 c -1.260864,-0.76873 -1.740297,-2.07437 -1.746311,-4.75572 -0.0079,-3.51228 1.048084,-4.82447 3.86486,-4.80265 1.80462,0.014 2.98274,0.45865 3.8054,1.43633 0.66171,0.78639 0.6939,0.95548 0.59115,3.10456 -0.12619,2.63941 -0.70776,4.03685 -2.0634,4.95811 -1.15342,0.78383 -3.218267,0.81137 -4.451699,0.0594 z"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0.0700042"
+         id="path2566"
+         sodipodi:nodetypes="ssssssss" />
+      <path
+         id="path1022"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0.0700042"
+         d="m -35.788127,137.94902 c -0.854152,0.003 -1.665936,0.14344 -2.248958,0.44494 -1.18187,0.61117 -1.664777,1.88481 -1.675866,4.42092 -0.01114,2.54948 0.732759,4.27929 2.172475,5.0524 1.412005,0.75823 3.718013,0.54021 4.751131,-0.44958 1.087798,-1.04217 1.598869,-2.74157 1.598869,-5.31441 0,-1.78437 -0.09553,-2.28765 -0.543118,-2.85667 -0.639167,-0.81257 -2.423879,-1.30396 -4.054533,-1.2976 z"
+         sodipodi:nodetypes="ssssssss" />
+      <path
+         style="fill:#000000;stroke-width:0.264583"
+         d="m -27.881527,160.84208 c -1.500216,-0.36865 -4.99927,-2.32429 -6.322605,-3.53375 -1.948557,-1.78087 -1.917402,-2.23846 0.03875,-0.56915 1.871722,1.59726 2.860868,2.19263 5.1781,3.11673 1.621419,0.64661 2.04089,0.70621 4.131196,0.58703 1.923018,-0.10964 2.609485,-0.27644 3.957939,-0.96167 1.753377,-0.891 1.881237,-0.93393 1.878127,-0.63058 -0.003,0.33151 -1.897386,1.30404 -3.420412,1.75633 -1.348092,0.40034 -4.25707,0.52601 -5.441095,0.23506 z m -9.657291,-12.97357 c -1.439718,-0.77311 -2.183609,-2.50325 -2.172476,-5.05273 0.01108,-2.53611 0.493828,-3.80974 1.6757,-4.42091 1.696065,-0.87707 5.329454,-0.38564 6.303422,0.85256 0.447588,0.56902 0.543354,1.07254 0.543354,2.85691 0,2.57284 -0.511318,4.27207 -1.599115,5.31424 -1.03312,0.98979 -3.338881,1.20816 -4.750885,0.44993 z m 3.620474,-0.31378 c 1.363703,-0.61914 1.84387,-1.49211 2.223065,-4.04163 0.553392,-3.72075 -0.431106,-4.96919 -3.918644,-4.96919 -1.804962,0 -2.026791,0.0612 -2.714335,0.74874 -0.574721,0.57472 -0.793265,1.10514 -0.940337,2.28227 -0.387214,3.09915 0.804659,5.75576 2.791917,6.22299 1.323327,0.31114 1.341125,0.30945 2.558334,-0.24318 z m -2.466461,-3.58686 c -0.234057,-0.60994 0.09473,-1.19062 0.674151,-1.19062 0.654909,0 0.900509,0.38051 0.684626,1.0607 -0.195709,0.61662 -1.137458,0.70667 -1.358777,0.12992 z m 15.300376,3.5651 c -1.260864,-0.76873 -1.740297,-2.07437 -1.746311,-4.75572 -0.0079,-3.51228 1.048084,-4.82447 3.86486,-4.80265 1.80462,0.014 2.98274,0.45865 3.8054,1.43633 0.66171,0.78639 0.6939,0.95548 0.59115,3.10456 -0.12619,2.63941 -0.70776,4.03685 -2.0634,4.95811 -1.15342,0.78383 -3.218267,0.81137 -4.451699,0.0594 z m 4.535359,-0.78328 c 1.05042,-0.92228 1.60568,-2.56952 1.62153,-4.81039 0.009,-1.24183 -0.10303,-1.62162 -0.65086,-2.21088 -0.3638,-0.39132 -0.95912,-0.8282 -1.32292,-0.97085 -1.02454,-0.40174 -3.416007,-0.28996 -4.154925,0.1942 -1.856931,1.2167 -1.913179,6.22509 -0.08828,7.86037 0.6756,0.60541 1.054123,0.72761 2.253795,0.72761 1.22325,0 1.57824,-0.11977 2.34166,-0.79006 z m -2.9024,-3.0464 c -0.2096,-0.54621 0.0746,-1.19063 0.52508,-1.19063 0.52965,0 1.05407,0.71372 0.87235,1.18726 -0.19836,0.51691 -1.19944,0.51933 -1.39743,0.003 z"
+         id="path21"
+         sodipodi:nodetypes="sssssscssssssssssssssssssssssssssssscsssssscsscc" />
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-1.0571732,-0.17818453)"
+       id="text13567"
+       style="font-size:29.3333px;line-height:0.95;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect13569)"
+       x="85.300026"
+       y="0"
+       inkscape:export-filename="/home/santi/Desktop/splash.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="-171.6617"
+         y="406.8343"
+         id="tspan73360"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'Roboto Condensed,  Bold'"
+           id="tspan73358">¿Cómo te va </tspan></tspan><tspan
+         x="-138.29651"
+         y="434.70093"
+         id="tspan73364"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'Roboto Condensed,  Bold'"
+           id="tspan73362">el día?</tspan></tspan></text>
+    <rect
+       style="opacity:0.9;fill:#008000;fill-opacity:1;stroke-width:0.702"
+       id="rect67206"
+       width="6.9000001"
+       height="6.9000001"
+       x="59.493767"
+       y="175.95816"
+       ry="0.96718252"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#00ff00;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-3"
+       width="6.9000001"
+       height="6.9000001"
+       x="68.028954"
+       y="175.95816"
+       ry="0.96718252"
+       inkscape:transform-center-x="12.147169"
+       inkscape:transform-center-y="2.4015395"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#b7c8c4;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-8"
+       width="6.9000001"
+       height="6.9000001"
+       x="-170.9106"
+       y="41.163261"
+       ry="0.96718252"
+       transform="rotate(-90.459456)"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#ff2a2a;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-0"
+       width="6.9000001"
+       height="6.9000001"
+       x="50.958588"
+       y="175.95816"
+       ry="0.96718252"
+       inkscape:transform-center-x="-17.339002"
+       inkscape:transform-center-y="-2.398823"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#ffffff;fill-opacity:1;stroke-width:1.30036"
+       id="rect67206-0-7"
+       width="6.9000001"
+       height="23.675817"
+       x="42.423397"
+       y="175.95816"
+       ry="0.7066744"
+       inkscape:transform-center-x="-17.339002"
+       inkscape:transform-center-y="-8.2310278"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#2b1100;fill-opacity:1;stroke-width:0.801984"
+       id="rect67206-0-7-2"
+       width="1.9357139"
+       height="32.1007"
+       x="171.93558"
+       y="-77.47081"
+       ry="0.9581399"
+       inkscape:transform-center-x="-11.081852"
+       inkscape:transform-center-y="4.8777247"
+       transform="matrix(-0.01606144,0.99987101,-0.9999992,-0.00126392,0,0)"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#2b1100;fill-opacity:1;stroke-width:0.801984"
+       id="rect67206-0-7-2-9"
+       width="1.9357139"
+       height="32.1007"
+       x="201.66896"
+       y="-78.093353"
+       ry="0.9581399"
+       inkscape:transform-center-x="-11.081852"
+       inkscape:transform-center-y="4.8777247"
+       transform="matrix(-0.01606144,0.99987101,-0.9999992,-0.00126392,0,0)"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#ffcc00;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-5"
+       width="6.9000001"
+       height="6.9000001"
+       x="59.352455"
+       y="184.69638"
+       ry="0.96718252"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#008080;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-3-6"
+       width="6.9000001"
+       height="6.9000001"
+       x="67.701035"
+       y="184.69638"
+       ry="0.96718252"
+       inkscape:transform-center-x="12.147169"
+       inkscape:transform-center-y="2.4015395"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#93aca7;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-8-6"
+       width="6.9000001"
+       height="6.9000001"
+       x="-170.97801"
+       y="49.569401"
+       ry="0.96718252"
+       transform="rotate(-90.459456)"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#ff9955;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-0-4"
+       width="6.9000001"
+       height="6.9000001"
+       x="51.003868"
+       y="184.69638"
+       ry="0.96718252"
+       inkscape:transform-center-x="-17.339002"
+       inkscape:transform-center-y="-2.398823"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#008000;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-00"
+       width="6.9000001"
+       height="6.9000001"
+       x="59.574516"
+       y="193.073"
+       ry="0.96718252"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#008080;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-3-4"
+       width="6.9000001"
+       height="6.9000001"
+       x="67.923103"
+       y="193.073"
+       ry="0.96718252"
+       inkscape:transform-center-x="12.147169"
+       inkscape:transform-center-y="2.4015395"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#b7c8c4;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-8-62"
+       width="6.9000001"
+       height="6.9000001"
+       x="-171.04541"
+       y="57.97554"
+       ry="0.96718252"
+       transform="rotate(-90.459456)"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#ff2a2a;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-0-6"
+       width="6.9000001"
+       height="6.9000001"
+       x="51.225933"
+       y="193.073"
+       ry="0.96718252"
+       inkscape:transform-center-x="-17.339002"
+       inkscape:transform-center-y="-2.398823"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#008000;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-7"
+       width="6.9000001"
+       height="6.9000001"
+       x="59.57452"
+       y="204.73543"
+       ry="0.96718252"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#ffcc00;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-3-5"
+       width="6.9000001"
+       height="6.9000001"
+       x="67.923103"
+       y="204.73543"
+       ry="0.96718252"
+       inkscape:transform-center-x="12.147169"
+       inkscape:transform-center-y="2.4015395"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#b7c8c4;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-8-69"
+       width="6.9000001"
+       height="6.9000001"
+       x="-171.11282"
+       y="66.381683"
+       ry="0.96718252"
+       transform="rotate(-90.459456)"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.9;fill:#00ff00;fill-opacity:1;stroke-width:0.702"
+       id="rect67206-0-8"
+       width="6.9000001"
+       height="6.9000001"
+       x="51.225937"
+       y="204.73543"
+       ry="0.96718252"
+       inkscape:transform-center-x="-17.339002"
+       inkscape:transform-center-y="-2.398823"
+       inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

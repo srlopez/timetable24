@@ -13,7 +13,7 @@ class RelojPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final _ = RelojController.to;
     final pd = _.progresoData;
-
+    print(pd.value.visible);
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: 0,
@@ -44,8 +44,9 @@ class RelojPage extends StatelessWidget {
                       }),
                     ),
                     // BARRA DE PROGRESO
-                    if (pd.value.visible)
-                      Obx(() => _buildProgressBar(context, pd.value)),
+                    Obx(() => pd.value.visible
+                        ? _buildProgressBar(context, pd.value)
+                        : Container()),
                   ],
                 ),
                 // FORMATO
@@ -120,6 +121,7 @@ class RelojPage extends StatelessWidget {
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      //textBaseline: TextBaseline.alphabetic,
       children: [
         SizedBox(width: 10),
         Text(

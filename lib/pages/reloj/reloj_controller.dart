@@ -105,7 +105,6 @@ class RelojController extends GetxController {
     //2
     GoogleFonts.shanti,
     GoogleFonts.lato,
-    GoogleFonts.comfortaa,
     GoogleFonts.coda,
     GoogleFonts.voces,
     GoogleFonts.raleway,
@@ -117,23 +116,16 @@ class RelojController extends GetxController {
     GoogleFonts.trirong,
     //5
     GoogleFonts.merriweather,
-    GoogleFonts.frankRuhlLibre,
-    GoogleFonts.crimsonPro,
     GoogleFonts.adamina,
-    GoogleFonts.songMyung,
     //6
-    GoogleFonts.nanumMyeongjo,
     GoogleFonts.cinzel,
     GoogleFonts.bellefair,
     //7
-    GoogleFonts.yanoneKaffeesatz,
-    GoogleFonts.electrolize,
     GoogleFonts.nixieOne,
-    GoogleFonts.kosugi,
+    GoogleFonts.rationale,
     GoogleFonts.emilysCandy,
     GoogleFonts.ralewayDots,
     GoogleFonts.zcoolQingKeHuangYou,
-    GoogleFonts.rationale,
     GoogleFonts.londrinaShadow,
   ];
   void nextFont() {
@@ -233,6 +225,8 @@ class RelojController extends GetxController {
 
     modeTexts[1] = formatResto(total, done);
 
+    // Verificamos si es el último minuto
+    // Alarma y presentación de segundos
     if (done == total - 1) {
       // Ultimo minuto
       modeTexts[1] = formatRestoEnSegundos();
