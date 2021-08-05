@@ -36,6 +36,7 @@ dependencies:
   wakelock: ^0.5.2
   tuple: ^2.0.0
   flutter_ringtone_player: ^3.0.0
+  timer_builder: ^2.0.0
 
 
 

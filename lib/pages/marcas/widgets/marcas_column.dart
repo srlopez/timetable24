@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timer_builder/timer_builder.dart';
 import '../../../models/marca_horaria.dart';
 import '../../../global/app_ctes/horario.dart' as Horario;
 
@@ -40,24 +41,54 @@ class ColumnaDeReloj extends StatelessWidget {
       return minutos;
     }
 
-    var ahora = DateTime.now();
-    var inicial = marcas[0];
-    var actual = Marca(ahora.hour, ahora.minute);
-    var total = getMinutos(marcas);
-    var diff = actual.diff(inicial);
-    return Column(
-      children: [
-        SizedBox(height: Horario.altoAjusteActividades),
-        Expanded(flex: diff, child: Container()),
-        if (diff >= 0 && diff <= total)
-          Divider(
-            height: 5,
-            color: Colors.cyan,
-          ),
-        Expanded(flex: total - diff, child: Container()),
-        SizedBox(height: Horario.altoAjusteActividades)
-      ],
-    );
+    return TimerBuilder.periodic(Duration(seconds: 1), builder: (context) {
+      var ahora = DateTime.now();
+      var inicial = marcas[0];
+      var actual = Marca(ahora.hour, ahora.minute);
+      var total = getMinutos(marcas);
+      var diff = actual.diff(inicial);
+      var color = Colors.blue.shade400;
+      var size = 17.0;
+      final radio = Radius.circular(size / 2);
+      var visible = (diff >= 0 && diff <= total);
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: Horario.altoAjusteActividades),
+          Expanded(
+              flex: diff,
+              child: Container(
+                alignment: FractionalOffset.bottomLeft,
+                child: visible
+                    ? Container(
+                        decoration: BoxDecoration(
+                            color: color,
+                            borderRadius: new BorderRadius.only(
+                              topLeft: radio,
+                              topRight: radio,
+                              bottomLeft: radio,
+                            )),
+                        height: size,
+                        width: size,
+                        padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
+                        alignment: Alignment.center,
+                        child:
+                            Text(ahora.minute.toString(), textScaleFactor: .8),
+                      )
+                    : Container(),
+              )),
+          if (visible)
+            Divider(
+              height: 2,
+              color: color,
+              indent: size / 2,
+            ),
+          Expanded(flex: total - diff, child: Container()),
+          SizedBox(height: Horario.altoAjusteActividades)
+        ],
+      );
+    });
   }
 }
 

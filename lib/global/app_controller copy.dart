@@ -96,13 +96,11 @@ class AppController extends GetxController {
   var horario = 0.obs;
   final horarios = ['A', 'B'];
   final hStorageKey = 'horario';
-  int nextHorario() => (horario.value + 1) % horarios.length;
 
-  Future<void> setNextHorario() async {
-    horario.value = nextHorario();
+  void menuProg() {
+    horario.value = (horario.value + 1) % horarios.length;
     hWrite();
-    await loadMarcas();
-    await loadActividades();
+    box.remove('marcasHorarias');
   }
 
   // Storage
@@ -111,8 +109,9 @@ class AppController extends GetxController {
 
 // MARCAS HORARIAS =====================================
   var marcasHorarias = <Marca>[].obs;
-  String mStorageKey() => horarios[horario.value] + 'marcas';
-
+  String mStorageKey() => 'marcas' + horarios[horario.value];
+//
+//'marcasHorarias'
   void setMarcas(RxList<Marca> marcas) => marcasHorarias = marcas;
 
   Future<void> loadMarcas() async {
@@ -136,7 +135,6 @@ class AppController extends GetxController {
   var patron = <Actividad>[]; //=actividades[5]
   var patronIdx = 5;
   var minutosTotales = 0.1;
-  String aStorageKey() => horarios[horario.value] + 'acts';
 
   Future<void> loadActividades() async {
     /// Inicializamos Actividades vacias
@@ -145,7 +143,7 @@ class AppController extends GetxController {
       actividades.add(<Actividad>[]);
 
     /// Creamos huecos vacios si no hay guardados
-    List? leido = box.read('${aStorageKey()}0');
+    List? leido = box.read('actividades0');
     if (leido == null) {
       inicializarActividades();
       return;
@@ -153,7 +151,7 @@ class AppController extends GetxController {
 
     /// Leemos los actividades y el patron
     for (var dia = 0; dia < patronIdx + 1; dia++) {
-      leido = box.read('${aStorageKey()}$dia');
+      leido = box.read('actividades$dia');
       leido!
           .forEach((data) => actividades[dia].add(Actividad.fromString(data)));
     }
@@ -164,7 +162,7 @@ class AppController extends GetxController {
   void saveActividades() {
     for (var dia = 0; dia < patronIdx + 1; dia++) {
       List diaList = actividades[dia].map((act) => act.toString()).toList();
-      box.write('${aStorageKey()}$dia', diaList);
+      box.write('actividades$dia', diaList);
     }
   }
 

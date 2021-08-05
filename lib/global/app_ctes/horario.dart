@@ -1,7 +1,7 @@
 const altoCabecera = 42.0;
 const altoPie = 40.0;
-const anchoIzquierda = 50.0;
-const anchoDerecha = 20.0;
+const anchoIzquierda = 60.0;
+const anchoDerecha = 10.0;
 const altoAjusteActividades = 8.0; //*2
 
 const maxAltoActividad = 60; // Depende del getActividadesHeight

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:timetable24/global/app_utils.dart';
+
 import '../../models/evento.dart';
 import '../marcas/widgets/marcas_column.dart';
 import '../../global/app_controller.dart';
@@ -38,7 +39,11 @@ class HorarioPage extends StatelessWidget {
     AppController app,
     PageController horarioPageController,
   ) {
-    var menu = ['Marcas horarias', 'Reiniciar actividades'];
+    var menu = [
+      'Editar marcas horarias',
+      'Reiniciar huecos',
+      "Ir a Horario '${app.horarios[app.nextHorario()]}'"
+    ];
     var brightness = MediaQuery.of(context).platformBrightness;
 
     return AppBar(
@@ -48,12 +53,9 @@ class HorarioPage extends StatelessWidget {
               .copyWith(statusBarColor: Theme.of(context).canvasColor)
           : SystemUiOverlayStyle.light
               .copyWith(statusBarColor: Theme.of(context).canvasColor),
-      //backgroundColor: Theme.of(context).canvasColor,
       foregroundColor: Theme.of(context).accentColor,
-
       title: Text(
         '${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
-        //style: Theme.of(context).textTheme.headline5
       ),
       actions: <Widget>[
         IconButton(
@@ -68,7 +70,7 @@ class HorarioPage extends StatelessWidget {
           onSelected: ((value) async {
             if (value == menu[0]) await Get.toNamed('/marcas');
             if (value == menu[1]) await app.inicializarActividades();
-            //if (value == menu[2]) await Get.toNamed('/reloj');
+            if (value == menu[2]) await app.setNextHorario();
             _.update();
           }),
           itemBuilder: (BuildContext context) {
@@ -103,8 +105,8 @@ class RowLayout extends StatelessWidget {
         //COLUMNA DE LA IZQUIERDA
         ColumnLayout(
           width: Horario.anchoIzquierda,
-          top: Dummy('#${_.nsemana}'),
-          center: ColumnaDeMarcasHorarias(marcas: app.marcasHorarias),
+          top: Dummy('#${_.nsemana}\n${app.horarios[app.horario.value]}'),
+          center: ColumnaDeMarcasHorarias(marcas: app.marcasHorarias.value),
           bottom: Dummy(),
         ),
 

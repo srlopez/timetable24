@@ -8,7 +8,7 @@ class SplashPage extends StatelessWidget {
   SplashPage({Key? key}) : super(key: key);
   final app = AppController.to;
 
-  var backColor = Colors.black54;
+  final backColor = Colors.black54;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
