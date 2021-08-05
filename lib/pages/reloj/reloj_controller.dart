@@ -9,6 +9,7 @@ import 'package:timetable24/global/app_controller.dart';
 import 'package:timetable24/models/marca_horaria.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class RelojController extends GetxController {
   AppController app;
@@ -167,8 +168,9 @@ class RelojController extends GetxController {
     Colors.teal,
     Colors.yellow,
   ];
+  int siguienteColor() => (color.value + 1) % colores.length;
   void nextColor() {
-    color.value = (color.value + 1) % colores.length;
+    color.value = siguienteColor();
     bWrite();
   }
 
@@ -183,13 +185,23 @@ class RelojController extends GetxController {
   // ALARMA ========
   var alarm = 0.obs;
   var playing = false;
+  var alarmIcon = [
+    Icons.notifications_off,
+    Icons.notifications_on,
+    Icons.notifications_paused_sharp
+  ];
   void setAlarm() {
-    alarm.value = (alarm.value + 1) % 2;
+    alarm.value = (alarm.value + 1) % alarmIcon.length;
     bWrite();
   }
 
   void playSound() {
     if (!playing) FlutterRingtonePlayer.playAlarm(asAlarm: true);
+    playing = true;
+  }
+
+  void playBuzz() {
+    Vibrate.vibrate();
     playing = true;
   }
 
@@ -230,10 +242,15 @@ class RelojController extends GetxController {
     if (done == total - 1) {
       // Ultimo minuto
       modeTexts[1] = formatRestoEnSegundos();
-      if (alarm.value == 1)
-        playSound();
-      else
-        stopSound();
+      switch (alarm.value) {
+        case 1:
+          playSound();
+          break;
+        case 2:
+          playBuzz();
+          break;
+        default:
+      }
     } else {
       // No es el ultimo minuto
       stopSound();

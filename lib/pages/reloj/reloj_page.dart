@@ -72,18 +72,14 @@ class RelojPage extends StatelessWidget {
             Obx(() => Simple(_.fontName(_.fonts[_.font.value]))),
             Spacer(),
             if (pd.value.visible) ...[
-              Obx(() => Simple(
-                  [
-                    Icons.notifications_off,
-                    Icons.notifications_on
-                  ][_.alarm.value],
-                  onPressed: _.setAlarm)),
+              Obx(() =>
+                  Simple(_.alarmIcon[_.alarm.value], onPressed: _.setAlarm)),
               Obx(() => Simple([_.formatResto(25, 10), '12:00'][_.mode.value],
                   onPressed: _.nextMode)),
             ],
             Obx(() => Simple('⬤', //'⓰'
                 onPressed: _.nextColor,
-                color: _.colores[(_.color.value + 1) % _.colores.length])),
+                color: _.colores[_.siguienteColor()])),
             Simple('▼|▲', onPressed: _.nextScale),
             Simple('ℱont', onPressed: _.nextFont),
             Simple(Icons.power_settings_new, onPressed: Get.back)
