@@ -60,7 +60,6 @@ class ColumnaDeReloj extends StatelessWidget {
       );
 
       return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: Horario.altoAjusteActividades),
           Expanded(

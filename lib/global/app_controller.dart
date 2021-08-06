@@ -196,7 +196,7 @@ class AppController extends GetxController {
       var mNow = Marca(now.hour, now.minute);
       var duracion = act.minutos;
       var diff = mNow.diff(mIni);
-      if (diff > 0 && diff <= duracion) return true;
+      if (diff >= 0 && diff <= duracion) return true;
       return false;
     }, orElse: () => Actividad(dia: 0, marca: 0, minutos: 0));
     return act.activo ? act : null;

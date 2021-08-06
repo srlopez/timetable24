@@ -37,10 +37,12 @@ class RelojPage extends StatelessWidget {
                     Expanded(
                       child: Obx(() {
                         final textoModo = _.modeTexts[_.mode.value];
+                        final trailing = _.modeTrailing[_.mode.value];
                         final iTicTac =
                             // Dos punto / Signo menos
                             !pd.value.visible || _.mode.value == 0 ? 2 : 0;
-                        return _buildReloj(context, textoModo, iTicTac);
+                        return _buildReloj(
+                            context, textoModo, iTicTac, trailing);
                       }),
                     ),
                     // BARRA DE PROGRESO
@@ -74,7 +76,7 @@ class RelojPage extends StatelessWidget {
             if (pd.value.visible) ...[
               Obx(() =>
                   Simple(_.alarmIcon[_.alarm.value], onPressed: _.setAlarm)),
-              Obx(() => Simple([_.formatResto(25, 10), '12:00'][_.mode.value],
+              Obx(() => Simple(['-16min', '12:00'][_.mode.value],
                   onPressed: _.nextMode)),
             ],
             Obx(() => Simple('⬤', //'⓰'
@@ -166,7 +168,8 @@ class RelojPage extends StatelessWidget {
     );
   }
 
-  Widget _buildReloj(BuildContext context, String value, int iTicTac) {
+  Widget _buildReloj(
+      BuildContext context, String value, int iTicTac, String trailing) {
     final _ = RelojController.to;
 
     var sFactor = _.scales[_.scale.value];
@@ -184,8 +187,8 @@ class RelojPage extends StatelessWidget {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.end,
-        // textBaseline: TextBaseline.ideographic,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        textBaseline: TextBaseline.ideographic,
         children: [
           if (iTicTac > 0)
             Text(value.substring(0, iTicTac),
@@ -197,6 +200,8 @@ class RelojPage extends StatelessWidget {
               style: font(textStyle: fStyle),
               textScaleFactor: sFactor,
               overflow: TextOverflow.clip),
+          if (trailing != '')
+            Text(trailing, style: font(textStyle: fStyle), textScaleFactor: 3),
         ],
       ),
     );

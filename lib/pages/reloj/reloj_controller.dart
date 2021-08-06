@@ -9,7 +9,6 @@ import 'package:timetable24/global/app_controller.dart';
 import 'package:timetable24/models/marca_horaria.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class RelojController extends GetxController {
   AppController app;
@@ -57,8 +56,8 @@ class RelojController extends GetxController {
 
   // hora / resto
   String _getTime() => DateFormat.Hms().format(DateTime.now());
-  String formatResto(int total, int done) => "-${total - done}'";
-  String formatRestoEnSegundos() => '-${60 - int.parse(currentHMS[2])}"';
+  String formatResto(int value) => "-$value";
+  String formatRestoEnSegundos() => formatResto(60 - int.parse(currentHMS[2]));
   var currentTime = '';
   var currentHMS = ['', '', ''].obs;
   var milliseconds = 1000;
@@ -176,7 +175,8 @@ class RelojController extends GetxController {
 
   // MODE ======= Hora o resto de actividad
   var mode = 0.obs;
-  var modeTexts = ['', ''];
+  var modeTexts = ['', '']; //Hora/Cuenta atras
+  var modeTrailing = ['', '']; // nada, min, s
   void nextMode() {
     mode.value = (mode.value + 1) % 2;
     bWrite();
@@ -188,7 +188,6 @@ class RelojController extends GetxController {
   var alarmIcon = [
     Icons.notifications_off,
     Icons.notifications_on,
-    //Icons.vibration
   ];
   void setAlarm() {
     alarm.value = (alarm.value + 1) % alarmIcon.length;
@@ -196,7 +195,11 @@ class RelojController extends GetxController {
   }
 
   void playSound() {
-    if (!playing) FlutterRingtonePlayer.playAlarm(asAlarm: true);
+    if (!playing)
+      FlutterRingtonePlayer.playNotification(
+          looping: false, asAlarm: true, volume: .2);
+    //FlutterRingtonePlayer.playRingtone(looping: true, asAlarm: true);
+    // FlutterRingtonePlayer.playAlarm(asAlarm: true);
     playing = true;
   }
 
@@ -229,18 +232,22 @@ class RelojController extends GetxController {
     var total = act.minutos;
     var done = mNow.diff(mIni) - 1; // -1 Para no resentar el minuto Cero
 
-    modeTexts[1] = formatResto(total, done);
+    modeTexts[1] = formatResto(total - done);
+    modeTrailing[1] = 'min';
 
     // Verificamos si es el último minuto
     // Alarma y presentación de segundos
     if (done == total - 1) {
       // Ultimo minuto
       modeTexts[1] = formatRestoEnSegundos();
+      modeTrailing[1] = 's';
+
       switch (alarm.value) {
         case 1:
           playSound();
           break;
         default:
+          stopSound();
       }
     } else {
       // No es el ultimo minuto
