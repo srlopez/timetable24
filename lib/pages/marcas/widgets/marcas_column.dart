@@ -43,14 +43,21 @@ class ColumnaDeReloj extends StatelessWidget {
 
     return TimerBuilder.periodic(Duration(seconds: 1), builder: (context) {
       var ahora = DateTime.now();
+      var hora = ahora.hour.toString();
+      var minute = '0' + ahora.minute.toString();
+      minute = minute.substring(minute.length - 2);
       var inicial = marcas[0];
       var actual = Marca(ahora.hour, ahora.minute);
       var total = getMinutos(marcas);
       var diff = actual.diff(inicial);
       var color = Colors.blue.shade400;
-      var size = 17.0;
-      final radio = Radius.circular(size / 2);
+      var size = 12.0;
       var visible = (diff >= 0 && diff <= total);
+      var tStyle = TextStyle(
+        color: color,
+        fontWeight: FontWeight.bold,
+        fontSize: size,
+      );
 
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,30 +68,44 @@ class ColumnaDeReloj extends StatelessWidget {
               child: Container(
                 alignment: FractionalOffset.bottomLeft,
                 child: visible
-                    ? Container(
-                        decoration: BoxDecoration(
-                            color: color,
-                            borderRadius: new BorderRadius.only(
-                              topLeft: radio,
-                              topRight: radio,
-                              bottomLeft: radio,
-                            )),
-                        height: size,
-                        width: size,
-                        padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
-                        alignment: Alignment.center,
-                        child:
-                            Text(ahora.minute.toString(), textScaleFactor: .8),
+                    ? RotatedBox(
+                        quarterTurns: -1,
+                        // decoration: BoxDecoration(
+                        //     color: color,
+                        //     borderRadius: new BorderRadius.only(
+                        //       topLeft: radio,
+                        //       topRight: radio,
+                        //       bottomLeft: radio,
+                        //     )),
+                        // height: size,
+                        // width: size,
+                        // padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
+                        // alignment: Alignment.center,
+                        child: Text(minute, style: tStyle),
                       )
-                    : Container(),
+                    : null,
               )),
           if (visible)
-            Divider(
-              height: 2,
-              color: color,
-              indent: size / 2,
+            Stack(
+              children: [
+                Divider(
+                  height: 3,
+                  color: color,
+                  indent: size * 1.2,
+                ),
+                RotatedBox(quarterTurns: -1, child: Text(':', style: tStyle)),
+              ],
             ),
-          Expanded(flex: total - diff, child: Container()),
+          Expanded(
+            flex: total - diff,
+            child: Container(
+              alignment: FractionalOffset.topLeft,
+              child: visible
+                  ? RotatedBox(
+                      quarterTurns: -1, child: Text(hora, style: tStyle))
+                  : null,
+            ),
+          ),
           SizedBox(height: Horario.altoAjusteActividades)
         ],
       );

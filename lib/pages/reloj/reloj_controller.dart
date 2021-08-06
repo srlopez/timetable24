@@ -188,7 +188,7 @@ class RelojController extends GetxController {
   var alarmIcon = [
     Icons.notifications_off,
     Icons.notifications_on,
-    Icons.notifications_paused_sharp
+    //Icons.vibration
   ];
   void setAlarm() {
     alarm.value = (alarm.value + 1) % alarmIcon.length;
@@ -200,14 +200,8 @@ class RelojController extends GetxController {
     playing = true;
   }
 
-  void playBuzz() {
-    Vibrate.vibrate();
-    playing = true;
-  }
-
   void stopSound() {
-    if (!playing) return;
-    FlutterRingtonePlayer.stop();
+    if (playing) FlutterRingtonePlayer.stop();
     playing = false;
   }
 
@@ -218,7 +212,7 @@ class RelojController extends GetxController {
     var now = DateTime.now();
 
     if (!app.esFechaConActividad(now)) {
-      // Dia marcado como sin actividad horaria
+      // Dia marcado sin actividad horaria
       setNoActividad();
       stopSound();
       return;
@@ -245,9 +239,6 @@ class RelojController extends GetxController {
       switch (alarm.value) {
         case 1:
           playSound();
-          break;
-        case 2:
-          playBuzz();
           break;
         default:
       }

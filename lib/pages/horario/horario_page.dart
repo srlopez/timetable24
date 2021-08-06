@@ -105,7 +105,7 @@ class RowLayout extends StatelessWidget {
         //COLUMNA DE LA IZQUIERDA
         ColumnLayout(
           width: Horario.anchoIzquierda,
-          top: Dummy('#${_.nsemana}\n${app.horarios[app.horario.value]}'),
+          top: Dummy('${app.horarios[app.horario.value]}\n#${_.nsemana}'),
           center: ColumnaDeMarcasHorarias(marcas: app.marcasHorarias.value),
           bottom: Dummy(),
         ),
@@ -228,7 +228,11 @@ class Dummy extends StatelessWidget {
     return Container(
       color: color ?? Theme.of(context).canvasColor,
       child: Center(
-        child: Text(text ?? '', style: Theme.of(context).textTheme.bodyText1),
+        child: Text(
+          text ?? '',
+          style: Theme.of(context).textTheme.bodyText1,
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
