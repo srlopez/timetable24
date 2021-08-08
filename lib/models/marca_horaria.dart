@@ -11,6 +11,10 @@ class Marca extends Duration {
     return (this - prev).inMinutes;
   }
 
+  Marca add(int minutes) {
+    return Marca(0, this.inMinutes + minutes);
+  }
+
   String toString() =>
       super.toString().split('.').first.padLeft(8, "0").substring(0, 5);
 
