@@ -17,18 +17,20 @@ class ActividadFormPage extends StatelessWidget {
     final app = AppController.to;
     _.getPatrones();
 
-    var dia = Horario.nombreLDias[_.model.value.dia + 1];
+    var dia = _.model.value.dia;
+    var diaNombre = Horario.nombreLDias[dia + 1];
 
     // Partimos de la marca Inicial y sumamos duraciones.
     var i = 0;
     var desde = app.marcasHorarias[0];
-    for (; i < _.model.value.marcaInicial; i++)
-      desde = desde.add(app.actividades[_.model.value.dia][i].minutos);
-
-    var hasta = desde.add(app.actividades[_.model.value.dia][i].minutos);
+    for (var m = 0;
+        m < _.model.value.marcaInicial;
+        m += app.actividades[dia][i].nHuecos, i++)
+      desde = desde.add(app.actividades[dia][i].minutos);
+    var hasta = desde.add(app.actividades[dia][i].minutos);
 
     return Scaffold(
-      appBar: AppBar(title: Text('$dia    $desde - $hasta')),
+      appBar: AppBar(title: Text('$diaNombre    $desde - $hasta')),
       body: _buildForm(context),
     );
   }
