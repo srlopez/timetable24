@@ -39,11 +39,8 @@ class HorarioPage extends StatelessWidget {
     AppController app,
     PageController horarioPageController,
   ) {
-    var menu = [
-      'Editar marcas horarias',
-      'Reiniciar huecos',
-      "Ir a Horario '${app.horarios[app.nextHorario()]}'"
-    ];
+    var menu = ['Marcas horarias', 'Establecer nuevo horario'];
+    var menuIcon = [Icons.edit, Icons.restart_alt];
     var brightness = MediaQuery.of(context).platformBrightness;
 
     return AppBar(
@@ -67,20 +64,49 @@ class HorarioPage extends StatelessWidget {
           //color: Theme.of(context).dividerColor,
         ),
         PopupMenuButton<String>(
+          itemBuilder: (BuildContext context) {
+            return [
+              for (var i = 0; i < menu.length; i++) ...[
+                PopupMenuItem<String>(
+                  value: menu[i],
+                  child: Row(children: [
+                    Icon(menuIcon[i]),
+                    Text('   ' + menu[i]),
+                  ]),
+                ),
+              ],
+              //PopupMenuItem(child: Divider(), enabled: false),
+              PopupMenuItem(
+                child: Column(
+                  children: [
+                    Text('\nHorario',
+                        style: Theme.of(context).textTheme.subtitle2),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for (var i = 0; i < app.horarios.length; i++) ...[
+                          Text(app.horarios[i]),
+                          Radio(
+                              groupValue: app.horario.value,
+                              value: i,
+                              onChanged: (value) async {
+                                await app.setHorario(value as int);
+                                _.update();
+                                Navigator.pop(context); //Cierra el menu
+                              })
+                        ],
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ];
+          },
           onSelected: ((value) async {
             if (value == menu[0]) await Get.toNamed('/marcas');
             if (value == menu[1]) await app.inicializarActividades();
-            if (value == menu[2]) await app.setNextHorario();
             _.update();
           }),
-          itemBuilder: (BuildContext context) {
-            return menu.map((String choice) {
-              return PopupMenuItem<String>(
-                value: choice,
-                child: Text(choice),
-              );
-            }).toList();
-          },
         ),
       ],
     );
@@ -105,7 +131,7 @@ class RowLayout extends StatelessWidget {
         //COLUMNA DE LA IZQUIERDA
         ColumnLayout(
           width: Horario.anchoIzquierda,
-          top: Dummy('${app.horarios[app.horario.value]}\n#${_.nsemana}'),
+          top: Dummy(), //'${app.horarios[app.horario.value]}\n#${_.nsemana}'),
           center: ColumnaDeMarcasHorarias(marcas: app.marcasHorarias.value),
           bottom: Dummy(),
         ),

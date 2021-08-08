@@ -39,6 +39,7 @@ class MarcasController extends GetxController {
   // Modifica la Marca Superior Visible
   void onUpdateMSuperior(int increment) {
     var limite = mSuperior.value.inHours + increment;
+    if (limite < 0) return;
     if (limite == mInferior.value.inHours) return;
     mSuperior.value = Marca(limite, 0);
   }
@@ -46,6 +47,7 @@ class MarcasController extends GetxController {
   // Modifica la Marca Inferior Visible
   void onUpdateMInferior(int increment) {
     var limite = mInferior.value.inHours + increment;
+    if (limite > 23) return;
     if (limite == mSuperior.value.inHours) return;
     mInferior.value = Marca(limite, 0);
   }

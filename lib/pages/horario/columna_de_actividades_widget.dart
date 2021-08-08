@@ -121,27 +121,30 @@ class ActividadContainer extends StatelessWidget {
 
     var tituloWidget = Text('${actividad.titulo}',
         overflow: TextOverflow.clip,
+        maxLines: 1,
         style: TextStyle(
           fontSize: 15.0,
           color: colorText,
           fontWeight: FontWeight.bold,
         ));
 
-    var subtituloWidget = actividad.subtitulo == ''
-        ? Container()
-        : Text(
+    var subtituloWidget = actividad.subtitulo != ''
+        ? Text(
             '${actividad.subtitulo}',
             overflow: TextOverflow.clip,
+            maxLines: 1,
             style: TextStyle(color: colorText),
-          );
+          )
+        : Container();
 
-    var pieWidget = actividad.pie == ''
-        ? Container()
-        : Text(
+    var pieWidget = actividad.pie != ''
+        ? Text(
             '${actividad.pie}',
             overflow: TextOverflow.clip,
+            maxLines: 1,
             style: TextStyle(fontSize: 10.0, color: colorText),
-          );
+          )
+        : Container();
     // trazas :::actividad.minutos * altoMinuto > 70
     // var am = actividad.minutos * altoMinuto;
     // var m = actividad.minutos;

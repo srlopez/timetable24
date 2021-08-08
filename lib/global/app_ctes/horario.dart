@@ -4,7 +4,7 @@ const anchoIzquierda = 55.0;
 const anchoDerecha = 10.0;
 const altoAjusteActividades = 8.0; //*2
 
-const maxAltoActividad = 60; // Depende del getActividadesHeight
+const maxAltoActividad = 65; // Depende del getActividadesHeight
 
 // Otras
 final nombreDias = const [

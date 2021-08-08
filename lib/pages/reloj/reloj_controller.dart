@@ -197,7 +197,7 @@ class RelojController extends GetxController {
   void playSound() {
     if (!playing)
       FlutterRingtonePlayer.playNotification(
-          looping: false, asAlarm: true, volume: .2);
+          looping: false, asAlarm: true, volume: .5);
     //FlutterRingtonePlayer.playRingtone(looping: true, asAlarm: true);
     // FlutterRingtonePlayer.playAlarm(asAlarm: true);
     playing = true;
@@ -230,7 +230,7 @@ class RelojController extends GetxController {
     var mIni = app.marcasHorarias[act.marcaInicial];
     var mFin = app.marcasHorarias[act.marcaInicial + act.nHuecos];
     var total = act.minutos;
-    var done = mNow.diff(mIni) - 1; // -1 Para no resentar el minuto Cero
+    var done = mNow.diff(mIni); // -1? Para no resentar el minuto Cero
 
     modeTexts[1] = formatResto(total - done);
     modeTrailing[1] = 'min';

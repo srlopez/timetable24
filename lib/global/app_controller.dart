@@ -94,12 +94,19 @@ class AppController extends GetxController {
 
 // HORARIOS =====================
   var horario = 0.obs;
-  final horarios = ['A', 'B'];
+  final horarios = ['A', 'B', 'C'];
   final hStorageKey = 'horario';
-  int nextHorario() => (horario.value + 1) % horarios.length;
+  // int nextHorario() => (horario.value + 1) % horarios.length;
 
-  Future<void> setNextHorario() async {
-    horario.value = nextHorario();
+  // Future<void> setNextHorario() async {
+  //   horario.value = nextHorario();
+  //   hWrite();
+  //   await loadMarcas();
+  //   await loadActividades();
+  // }
+
+  Future<void> setHorario(int h) async {
+    horario.value = h;
     hWrite();
     await loadMarcas();
     await loadActividades();
@@ -196,7 +203,7 @@ class AppController extends GetxController {
       var mNow = Marca(now.hour, now.minute);
       var duracion = act.minutos;
       var diff = mNow.diff(mIni);
-      if (diff >= 0 && diff <= duracion) return true;
+      if (diff >= 0 && diff < duracion) return true;
       return false;
     }, orElse: () => Actividad(dia: 0, marca: 0, minutos: 0));
     return act.activo ? act : null;

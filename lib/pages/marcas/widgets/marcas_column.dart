@@ -69,17 +69,6 @@ class ColumnaDeReloj extends StatelessWidget {
                 child: visible
                     ? RotatedBox(
                         quarterTurns: -1,
-                        // decoration: BoxDecoration(
-                        //     color: color,
-                        //     borderRadius: new BorderRadius.only(
-                        //       topLeft: radio,
-                        //       topRight: radio,
-                        //       bottomLeft: radio,
-                        //     )),
-                        // height: size,
-                        // width: size,
-                        // padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
-                        // alignment: Alignment.center,
                         child: Text(minute, style: tStyle),
                       )
                     : null,

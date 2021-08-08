@@ -25,13 +25,13 @@ class SplashPage extends StatelessWidget {
         //color: backColor,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/splash.png"),
+            image: AssetImage("assets/splash.jpg"),
             fit: BoxFit.cover,
           ),
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Text(
@@ -59,7 +59,7 @@ class SplashPage extends StatelessWidget {
               //   indent: 100.0,
               //   endIndent: 100.0,
               // ),
-              SizedBox(height: 100),
+              SizedBox(height: 250),
               Obx(() => app.nLoading.value == 0
                   ? Text('entramos...')
                   : Column(

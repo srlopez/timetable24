@@ -24,16 +24,57 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.4859428"
-     inkscape:cx="197.85419"
-     inkscape:cy="598.94636"
+     inkscape:cx="317.64345"
+     inkscape:cy="764.4978"
      inkscape:window-width="1920"
-     inkscape:window-height="1016"
-     inkscape:window-x="0"
-     inkscape:window-y="34"
+     inkscape:window-height="1050"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="77.455032,80.838137"
+       orientation="0,-1"
+       id="guide2811" />
+    <sodipodi:guide
+       position="86.535967,68.908281"
+       orientation="0,-1"
+       id="guide3350" />
+    <sodipodi:guide
+       position="79.235608,47.363317"
+       orientation="0,-1"
+       id="guide3352" />
+    <sodipodi:guide
+       position="100.95863,35.255404"
+       orientation="0,-1"
+       id="guide3354" />
+    <sodipodi:guide
+       position="35.611509,57.156483"
+       orientation="1,0"
+       id="guide3356" />
+    <sodipodi:guide
+       position="55.910069,68.908283"
+       orientation="1,0"
+       id="guide3358" />
+    <sodipodi:guide
+       position="77.098917,42.911878"
+       orientation="1,0"
+       id="guide3360" />
+    <sodipodi:guide
+       position="26.352517,56.266195"
+       orientation="1,0"
+       id="guide4250" />
+  </sodipodi:namedview>
   <defs
      id="defs2">
+    <rect
+       x="156.4535"
+       y="770.64636"
+       width="35.715731"
+       height="28.539922"
+       id="rect9059" />
     <rect
        x="-175.11377"
        y="384.26271"
@@ -46,6 +87,30 @@
        width="151.04848"
        height="57.729683"
        id="rect13569-3" />
+    <rect
+       x="156.45351"
+       y="770.64636"
+       width="35.715733"
+       height="28.539923"
+       id="rect9059-2" />
+    <rect
+       x="156.45351"
+       y="770.64636"
+       width="35.715733"
+       height="28.539923"
+       id="rect9059-23" />
+    <rect
+       x="156.45351"
+       y="770.64636"
+       width="35.715733"
+       height="28.539923"
+       id="rect9059-23-5" />
+    <rect
+       x="156.45351"
+       y="770.64636"
+       width="35.715733"
+       height="28.539923"
+       id="rect9059-23-2" />
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -54,8 +119,8 @@
     <circle
        style="opacity:0.9;fill:#62bee7;fill-opacity:1;stroke-width:0.702"
        id="path68103"
-       cx="59.234673"
-       cy="185.66861"
+       cx="52.821861"
+       cy="141.70532"
        r="41.735352"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
        inkscape:export-xdpi="96"
@@ -65,8 +130,8 @@
        id="rect67206-0-2"
        width="38.784206"
        height="53.785748"
-       x="39.252785"
-       y="159.26329"
+       x="32.839973"
+       y="115.3"
        ry="2.2441549"
        inkscape:transform-center-x="-97.46078"
        inkscape:transform-center-y="-18.698908"
@@ -95,14 +160,14 @@
        inkscape:export-ydpi="96"><tspan
          x="-144.45996"
          y="402.73021"
-         id="tspan73352"><tspan
+         id="tspan23442"><tspan
            style="font-weight:bold;-inkscape-font-specification:'Roboto Condensed,  Bold'"
-           id="tspan73350">¡Cada día </tspan></tspan><tspan
+           id="tspan23440">¡Cada día </tspan></tspan><tspan
          x="-130.2627"
          y="425.5302"
-         id="tspan73356"><tspan
+         id="tspan23446"><tspan
            style="font-weight:bold;-inkscape-font-specification:'Roboto Condensed,  Bold'"
-           id="tspan73354">mejor!</tspan></tspan></text>
+           id="tspan23444">mejor!</tspan></tspan></text>
     <g
        id="g49263"
        transform="translate(-0.14924992,-11.14486)"
@@ -137,21 +202,21 @@
        inkscape:export-ydpi="96"><tspan
          x="-171.6617"
          y="406.8343"
-         id="tspan73360"><tspan
+         id="tspan23450"><tspan
            style="font-weight:bold;-inkscape-font-specification:'Roboto Condensed,  Bold'"
-           id="tspan73358">¿Cómo te va </tspan></tspan><tspan
+           id="tspan23448">¿Cómo te va </tspan></tspan><tspan
          x="-138.29651"
          y="434.70093"
-         id="tspan73364"><tspan
+         id="tspan23454"><tspan
            style="font-weight:bold;-inkscape-font-specification:'Roboto Condensed,  Bold'"
-           id="tspan73362">el día?</tspan></tspan></text>
+           id="tspan23452">el día?</tspan></tspan></text>
     <rect
        style="opacity:0.9;fill:#008000;fill-opacity:1;stroke-width:0.702"
        id="rect67206"
        width="6.9000001"
        height="6.9000001"
-       x="59.493767"
-       y="175.95816"
+       x="53.080956"
+       y="131.99487"
        ry="0.96718252"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
        inkscape:export-xdpi="96"
@@ -161,8 +226,8 @@
        id="rect67206-3"
        width="6.9000001"
        height="6.9000001"
-       x="68.028954"
-       y="175.95816"
+       x="61.616142"
+       y="131.99487"
        ry="0.96718252"
        inkscape:transform-center-x="12.147169"
        inkscape:transform-center-y="2.4015395"
@@ -174,8 +239,8 @@
        id="rect67206-8"
        width="6.9000001"
        height="6.9000001"
-       x="-170.9106"
-       y="41.163261"
+       x="-126.89729"
+       y="35.103195"
        ry="0.96718252"
        transform="rotate(-90.459456)"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
@@ -186,8 +251,8 @@
        id="rect67206-0"
        width="6.9000001"
        height="6.9000001"
-       x="50.958588"
-       y="175.95816"
+       x="44.545776"
+       y="131.99487"
        ry="0.96718252"
        inkscape:transform-center-x="-17.339002"
        inkscape:transform-center-y="-2.398823"
@@ -199,8 +264,8 @@
        id="rect67206-0-7"
        width="6.9000001"
        height="23.675817"
-       x="42.423397"
-       y="175.95816"
+       x="36.010586"
+       y="131.99487"
        ry="0.7066744"
        inkscape:transform-center-x="-17.339002"
        inkscape:transform-center-y="-8.2310278"
@@ -212,8 +277,8 @@
        id="rect67206-0-7-2"
        width="1.9357139"
        height="32.1007"
-       x="171.93558"
-       y="-77.47081"
+       x="127.97561"
+       y="-70.351936"
        ry="0.9581399"
        inkscape:transform-center-x="-11.081852"
        inkscape:transform-center-y="4.8777247"
@@ -226,8 +291,8 @@
        id="rect67206-0-7-2-9"
        width="1.9357139"
        height="32.1007"
-       x="201.66896"
-       y="-78.093353"
+       x="157.709"
+       y="-70.97448"
        ry="0.9581399"
        inkscape:transform-center-x="-11.081852"
        inkscape:transform-center-y="4.8777247"
@@ -240,8 +305,8 @@
        id="rect67206-5"
        width="6.9000001"
        height="6.9000001"
-       x="59.352455"
-       y="184.69638"
+       x="52.939644"
+       y="140.73309"
        ry="0.96718252"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
        inkscape:export-xdpi="96"
@@ -251,8 +316,8 @@
        id="rect67206-3-6"
        width="6.9000001"
        height="6.9000001"
-       x="67.701035"
-       y="184.69638"
+       x="61.288223"
+       y="140.73309"
        ry="0.96718252"
        inkscape:transform-center-x="12.147169"
        inkscape:transform-center-y="2.4015395"
@@ -264,8 +329,8 @@
        id="rect67206-8-6"
        width="6.9000001"
        height="6.9000001"
-       x="-170.97801"
-       y="49.569401"
+       x="-126.96471"
+       y="43.509335"
        ry="0.96718252"
        transform="rotate(-90.459456)"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
@@ -276,8 +341,8 @@
        id="rect67206-0-4"
        width="6.9000001"
        height="6.9000001"
-       x="51.003868"
-       y="184.69638"
+       x="44.591057"
+       y="140.73309"
        ry="0.96718252"
        inkscape:transform-center-x="-17.339002"
        inkscape:transform-center-y="-2.398823"
@@ -289,8 +354,8 @@
        id="rect67206-00"
        width="6.9000001"
        height="6.9000001"
-       x="59.574516"
-       y="193.073"
+       x="53.161705"
+       y="149.10971"
        ry="0.96718252"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
        inkscape:export-xdpi="96"
@@ -300,8 +365,8 @@
        id="rect67206-3-4"
        width="6.9000001"
        height="6.9000001"
-       x="67.923103"
-       y="193.073"
+       x="61.510292"
+       y="149.10971"
        ry="0.96718252"
        inkscape:transform-center-x="12.147169"
        inkscape:transform-center-y="2.4015395"
@@ -313,8 +378,8 @@
        id="rect67206-8-62"
        width="6.9000001"
        height="6.9000001"
-       x="-171.04541"
-       y="57.97554"
+       x="-127.0321"
+       y="51.915474"
        ry="0.96718252"
        transform="rotate(-90.459456)"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
@@ -325,8 +390,8 @@
        id="rect67206-0-6"
        width="6.9000001"
        height="6.9000001"
-       x="51.225933"
-       y="193.073"
+       x="44.813122"
+       y="149.10971"
        ry="0.96718252"
        inkscape:transform-center-x="-17.339002"
        inkscape:transform-center-y="-2.398823"
@@ -338,8 +403,8 @@
        id="rect67206-7"
        width="6.9000001"
        height="6.9000001"
-       x="59.57452"
-       y="204.73543"
+       x="53.161709"
+       y="160.77214"
        ry="0.96718252"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
        inkscape:export-xdpi="96"
@@ -349,8 +414,8 @@
        id="rect67206-3-5"
        width="6.9000001"
        height="6.9000001"
-       x="67.923103"
-       y="204.73543"
+       x="61.510292"
+       y="160.77214"
        ry="0.96718252"
        inkscape:transform-center-x="12.147169"
        inkscape:transform-center-y="2.4015395"
@@ -362,8 +427,8 @@
        id="rect67206-8-69"
        width="6.9000001"
        height="6.9000001"
-       x="-171.11282"
-       y="66.381683"
+       x="-127.09952"
+       y="60.321617"
        ry="0.96718252"
        transform="rotate(-90.459456)"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
@@ -374,12 +439,170 @@
        id="rect67206-0-8"
        width="6.9000001"
        height="6.9000001"
-       x="51.225937"
-       y="204.73543"
+       x="44.813126"
+       y="160.77214"
        ry="0.96718252"
        inkscape:transform-center-x="-17.339002"
        inkscape:transform-center-y="-2.398823"
        inkscape:export-filename="/home/santi/Desktop/app_icon..png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="opacity:0.9;fill:#ececec;fill-opacity:1;stroke-width:0.702"
+       id="path68103-3"
+       cx="55.874901"
+       cy="232.06612"
+       r="41.735352"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 26.352517,216.16186 68.219384,0"
+       id="path2846"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 26.352517,228.09172 9.258992,0 v 0"
+       id="path3475"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 35.611509,216.16186 c 0,52.41464 0,52.41464 0,52.41464"
+       id="path3656"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 55.910069,216.16186 c 0,57.81312 0,57.81312 0,57.81312"
+       id="path3837"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 77.098916,216.16186 v 51.91688"
+       id="path3839"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 55.910069,228.09172 h 41.44146"
+       id="path3841"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 77.098916,249.63668 H 93.630667"
+       id="path3843"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 55.910069,261.74459 H 85.050343"
+       id="path3845"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 55.910069,249.63668 -29.557552,0"
+       id="path3847"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 35.611509,261.74459 H 26.299178"
+       id="path3849"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       id="rect4432"
+       style="opacity:0.9;fill:#008000;stroke-width:0.79375;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 36.140625,217.2207 c 0,10.62891 0,21.25782 0,31.88672 6.413411,0 12.826823,0 19.240234,0 0,-10.80534 0,-21.61068 0,-32.41601 -6.413411,0 -12.826823,0 -19.240234,0 0,0.17643 0,0.35286 0,0.52929 z"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       id="rect4436"
+       style="opacity:0.9;fill:#ffd42a;stroke-width:0.79375;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 56.439453,261.21484 c 6.710287,0 13.420573,0 20.130859,0 0,-10.86458 10e-7,-21.72916 0,-32.59375 -6.710286,0 -13.420572,0 -20.130859,0 0,10.86459 0,21.72917 0,32.59375 z"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.96870542,0,0,0.96870542,-108.8538,-547.93656)"
+       id="text9057"
+       style="font-size:13.3333px;line-height:1.25;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9059)"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="156.45312"
+         y="782.90673"
+         id="tspan23456">L</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.38129032,0,0,0.38129032,-33.343103,-76.945821)"
+       id="text9057-7"
+       style="font-size:13.3333px;line-height:1.25;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9059-23)"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="156.45312"
+         y="782.90673"
+         id="tspan23458">7:00</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.38129032,0,0,0.38129032,-33.120128,-65.300496)"
+       id="text9057-7-9"
+       style="font-size:13.3333px;line-height:1.25;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9059-23-5)"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="156.45312"
+         y="782.90673"
+         id="tspan23460">8:00</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.38129032,0,0,0.38129032,-33.35974,-43.982126)"
+       id="text9057-7-2"
+       style="font-size:13.3333px;line-height:1.25;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9059-23-2)"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="156.45312"
+         y="782.90673"
+         id="tspan23462">9:30</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.96870542,0,0,0.96870542,-90.092603,-547.88762)"
+       id="text9057-0"
+       style="font-size:13.3333px;line-height:1.25;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9059-2)"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="156.45312"
+         y="782.90673"
+         id="tspan23464">M</tspan></text>
+    <path
+       id="rect15498"
+       style="opacity:0.9;fill:#0066ff;stroke-width:0.79375;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 56.439453,227.5625 c 6.710287,0 13.420573,0 20.130859,0 0,-3.6237 10e-7,-7.2474 0,-10.87109 -6.710286,0 -13.420572,0 -20.130859,0 0,3.62369 0,7.24739 0,10.87109 z"
+       inkscape:export-filename="/home/santi/dev/flutter/timetable24/assets/app_icon.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
   </g>
