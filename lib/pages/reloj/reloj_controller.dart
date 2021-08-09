@@ -176,6 +176,12 @@ class RelojController extends GetxController {
 
   // MODE ======= Hora o resto de actividad
   var mode = 0.obs;
+  var modeIcon = [
+    //Icons.hourglass_bottom,
+    //Icons.watch_later_outlined,
+    '-5 m',
+    '12:10'
+  ];
   var modeTexts = ['', '']; //Hora/Cuenta atras
   var modeTrailing = ['', '']; // nada, min, s
   void nextMode() {

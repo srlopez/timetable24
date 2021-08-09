@@ -76,8 +76,8 @@ class RelojPage extends StatelessWidget {
             if (pd.value.visible) ...[
               Obx(() =>
                   Simple(_.alarmIcon[_.alarm.value], onPressed: _.setAlarm)),
-              Obx(() => Simple(['-16min', '12:00'][_.mode.value],
-                  onPressed: _.nextMode)),
+              Obx(() =>
+                  Simple(_.modeIcon[_.mode.value], onPressed: _.nextMode)),
             ],
             Obx(() => Simple('⬤', //'⓰'
                 onPressed: _.nextColor,
