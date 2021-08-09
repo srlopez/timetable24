@@ -179,7 +179,8 @@ class RelojController extends GetxController {
   var modeIcon = [
     //Icons.hourglass_bottom,
     //Icons.watch_later_outlined,
-    '-5 m',
+    //'-5 m',
+    Icons.timer_10_select,
     '12:10'
   ];
   var modeTexts = ['', '']; //Hora/Cuenta atras
