@@ -71,7 +71,7 @@ class RelojPage extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Obx(() => Simple(_.fontName(_.fonts[_.font.value]))),
+            // Obx(() => Simple(_.fontName(_.fonts[_.font.value]))),
             Spacer(),
             if (pd.value.visible) ...[
               Obx(() =>
@@ -103,7 +103,9 @@ class RelojPage extends StatelessWidget {
         Theme.of(context).textTheme.bodyText1!.copyWith(color: pd.color);
 
     var height = 30.0;
-    var textoCentral = [_.modeTexts[1], _.modeTexts[0]][_.mode.value];
+    var textoCentral = [_.modeTexts[1], _.modeTexts[0]][_.mode.value] +
+        ' ' +
+        [_.modeTrailing[1], ''][_.mode.value];
 
     var done = pd.done * 60 + int.parse(_.currentHMS[2]);
     var notdone = (pd.total - pd.done) * 60 - int.parse(_.currentHMS[2]);
@@ -130,6 +132,7 @@ class RelojPage extends StatelessWidget {
         SizedBox(width: 10),
         Expanded(
             child: Stack(
+          alignment: AlignmentDirectional.center,
           children: [
             Container(
               decoration: decoProgressBar,

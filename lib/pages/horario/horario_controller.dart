@@ -62,7 +62,7 @@ class HorarioController extends GetxController {
     if (actividades[index].nHuecos == 1) return;
     //
     var huecoIdx =
-        actividades[index].marcaInicial + actividades[index].nHuecos - 1;
+        actividades[index].huecoInicial + actividades[index].nHuecos - 1;
     var minutosARestar = app.patron[huecoIdx].minutos;
     // actualizamos la actividad
     actividades[index].minutos -= minutosARestar;

@@ -6,7 +6,7 @@ class Actividad {
   //
   int dia = 0;
   int minutos;
-  int marcaInicial = 0;
+  int huecoInicial = 0;
   int nHuecos = 0;
   //
   bool activo = false;
@@ -16,7 +16,7 @@ class Actividad {
   Color color = Colors.grey.shade200;
 
   Actividad({required this.dia, required int marca, required this.minutos})
-      : marcaInicial = marca,
+      : huecoInicial = marca,
         nHuecos = 1 {
     resetActividad();
   }
@@ -34,7 +34,7 @@ class Actividad {
   Actividad.fromJson(Map<String, dynamic> json)
       : dia = int.parse(json['dia'].toString()),
         minutos = int.parse(json['minutos'].toString()),
-        marcaInicial = int.parse(json['inicio'].toString()),
+        huecoInicial = int.parse(json['inicio'].toString()),
         nHuecos = int.parse(json['largo'].toString()),
         //
         color = Color(int.parse(json['color'].toString())),
@@ -50,7 +50,7 @@ class Actividad {
   Map<String, dynamic> toJson() => {
         'dia': dia,
         'minutos': minutos,
-        'inicio': marcaInicial,
+        'inicio': huecoInicial,
         'largo': nHuecos,
         //
         'color': color.value,

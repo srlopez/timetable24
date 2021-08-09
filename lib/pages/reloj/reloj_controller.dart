@@ -96,6 +96,8 @@ class RelojController extends GetxController {
   // FUENTE =======
   var font = 0.obs;
   var fonts = [
+    //0
+    GoogleFonts.shanti,
     //1
     GoogleFonts.bebasNeue,
     GoogleFonts.oswald,
@@ -103,7 +105,6 @@ class RelojController extends GetxController {
     GoogleFonts.fjallaOne,
     GoogleFonts.righteous,
     //2
-    GoogleFonts.shanti,
     GoogleFonts.lato,
     GoogleFonts.coda,
     GoogleFonts.voces,
@@ -227,8 +228,8 @@ class RelojController extends GetxController {
       return;
     }
     var mNow = Marca(DateTime.now().hour, DateTime.now().minute);
-    var mIni = app.marcasHorarias[act.marcaInicial];
-    var mFin = app.marcasHorarias[act.marcaInicial + act.nHuecos];
+    var mIni = app.marcasHorarias[act.huecoInicial];
+    var mFin = app.marcasHorarias[act.huecoInicial + act.nHuecos];
     var total = act.minutos;
     var done = mNow.diff(mIni); // -1? Para no resentar el minuto Cero
 

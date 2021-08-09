@@ -39,7 +39,7 @@ class HorarioPage extends StatelessWidget {
     AppController app,
     PageController horarioPageController,
   ) {
-    var menu = ['Marcas horarias', 'Establecer nuevo horario'];
+    var menu = ['Marcas horarias', 'Establecer huecos en marcas'];
     var menuIcon = [Icons.edit, Icons.restart_alt];
     var brightness = MediaQuery.of(context).platformBrightness;
 
@@ -52,6 +52,7 @@ class HorarioPage extends StatelessWidget {
               .copyWith(statusBarColor: Theme.of(context).canvasColor),
       foregroundColor: Theme.of(context).accentColor,
       title: Text(
+        //'${app.horarios[app.horario.value]}${_.nsemana} - ${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
         '${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
       ),
       actions: <Widget>[

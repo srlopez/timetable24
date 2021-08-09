@@ -77,7 +77,7 @@ class AppController extends GetxController {
   }
 
   // Devuelve el estado de un cargador
-  String getDataStatus(String key) => _loaders[key]!.done
+  String getLoaderStatus(String key) => _loaders[key]!.done
       ? 'done'
       : _loaders[key]!.loading
           ? 'loading...'
@@ -96,14 +96,6 @@ class AppController extends GetxController {
   var horario = 0.obs;
   final horarios = ['A', 'B', 'C'];
   final hStorageKey = 'horario';
-  // int nextHorario() => (horario.value + 1) % horarios.length;
-
-  // Future<void> setNextHorario() async {
-  //   horario.value = nextHorario();
-  //   hWrite();
-  //   await loadMarcas();
-  //   await loadActividades();
-  // }
 
   Future<void> setHorario(int h) async {
     horario.value = h;
@@ -199,7 +191,7 @@ class AppController extends GetxController {
     var now = DateTime.now();
     if (now.weekday > 5) return null;
     var act = actividades[now.weekday - 1].firstWhere((act) {
-      var mIni = marcasHorarias[act.marcaInicial];
+      var mIni = getMarcaInicial(act);
       var mNow = Marca(now.hour, now.minute);
       var duracion = act.minutos;
       var diff = mNow.diff(mIni);
@@ -209,9 +201,17 @@ class AppController extends GetxController {
     return act.activo ? act : null;
   }
 
-  // Marca getMarcaInicial(Actividad act) {
-  //   return marcasHorarias[act.marcaInicial];
-  // }
+  Marca getMarcaInicial(Actividad act) {
+    // Partimos de la marca Inicial y sumamos duraciones
+    // hasta que hemos completado el numero de huecos.
+    var i = 0;
+    var marca = marcasHorarias[0];
+    for (var huecos = 0;
+        huecos < act.huecoInicial;
+        huecos += actividades[act.dia][i].nHuecos, i++)
+      marca = marca.add(actividades[act.dia][i].minutos);
+    return marca;
+  }
 
 // EVENTOS ==============================================
   var eventos = <Evento>[].obs;

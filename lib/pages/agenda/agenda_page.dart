@@ -135,21 +135,21 @@ class AgendaPage extends StatelessWidget {
               semanaActualKey.currentContext ?? context)),
           //color: Theme.of(context).dividerColor,
         ),
-        PopupMenuButton<String>(
+        PopupMenuButton(
           onSelected: ((value) async {
-            //if (value == 'Reload') _.inicializarItems();
-            if (value == 'Inicializar') _.deleteAll();
-            //if (value == 'Ver reloj') await Get.toNamed('/reloj');
+            if (value == 0) _.deleteAll();
 
             _.update();
           }),
           itemBuilder: (BuildContext context) {
-            return {'Inicializar'}.map((String choice) {
-              return PopupMenuItem<String>(
-                value: choice,
-                child: Text(choice),
-              );
-            }).toList();
+            return [
+              PopupMenuItem(
+                value: 0,
+                child: Row(
+                  children: [Icon(Icons.restart_alt), Text('  Borrar eventos')],
+                ),
+              )
+            ];
           },
         ),
       ],
