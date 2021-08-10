@@ -80,8 +80,7 @@ class RelojController extends GetxController {
         setActividad();
       });
 
-  // FORMATO ======
-  // tamaño
+  // TAMAÑO ======
   var scale = 0.obs;
   var scales = [];
   void setScales() {
@@ -179,12 +178,11 @@ class RelojController extends GetxController {
   var modeIcon = [
     //Icons.hourglass_bottom,
     //Icons.watch_later_outlined,
-    //'-5 m',
     Icons.timer_10_select,
     '12:10'
   ];
-  var modeTexts = ['', '']; //Hora/Cuenta atras
-  var modeTrailing = ['', '']; // nada, min, s
+  var modeTexts = ['', '']; //Hora, Cuenta atras
+  var modeTrailing = ['', '']; // nada, min/s
   void nextMode() {
     mode.value = (mode.value + 1) % 2;
     bWrite();
@@ -205,8 +203,8 @@ class RelojController extends GetxController {
   void playSound() {
     if (!playing)
       FlutterRingtonePlayer.playNotification(
-          looping: false, asAlarm: true, volume: .5);
-    //FlutterRingtonePlayer.playRingtone(looping: true, asAlarm: true);
+          looping: false, asAlarm: true, volume: 1);
+    // FlutterRingtonePlayer.playRingtone(looping: true, asAlarm: true);
     // FlutterRingtonePlayer.playAlarm(asAlarm: true);
     playing = true;
   }
@@ -216,8 +214,8 @@ class RelojController extends GetxController {
     playing = false;
   }
 
-  // Actividad / ProgressData ================
-  var progresoData = ProgresoData.fromNull().obs;
+  // Actividad / ProgressBarData ================
+  var progressBarData = ProgressBarData.fromNull().obs;
 
   void setActividad() {
     var now = DateTime.now();
@@ -235,10 +233,12 @@ class RelojController extends GetxController {
       return;
     }
     var mNow = Marca(DateTime.now().hour, DateTime.now().minute);
-    var mIni = app.marcasHorarias[act.huecoInicial];
-    var mFin = app.marcasHorarias[act.huecoInicial + act.nHuecos];
+
+    var mIni = app.getMarcaInicial(act);
+    var mFin = mIni.add(act.minutos);
+
     var total = act.minutos;
-    var done = mNow.diff(mIni); // -1? Para no resentar el minuto Cero
+    var done = mNow.diff(mIni);
 
     modeTexts[1] = formatResto(total - done);
     modeTrailing[1] = 'min';
@@ -250,29 +250,25 @@ class RelojController extends GetxController {
       modeTexts[1] = formatRestoEnSegundos();
       modeTrailing[1] = 's';
 
-      switch (alarm.value) {
-        case 1:
-          playSound();
-          break;
-        default:
-          stopSound();
-      }
-    } else {
+      if (alarm.value == 1)
+        playSound();
+      else
+        stopSound();
+    } else
       // No es el ultimo minuto
       stopSound();
-    }
 
-    progresoData.value = ProgresoData(
+    progressBarData.value = ProgressBarData(
         start: mIni, end: mFin, total: total, done: done, color: act.color);
   }
 
   void setNoActividad() {
-    progresoData.value = ProgresoData.fromNull();
+    progressBarData.value = ProgressBarData.fromNull();
     mode.value = 0;
   }
 }
 
-class ProgresoData {
+class ProgressBarData {
   bool visible = false;
   String start = '';
   String end = '';
@@ -280,13 +276,13 @@ class ProgresoData {
   int done = 0;
   Color color = Colors.white;
 
-  ProgresoData.fromNull()
+  ProgressBarData.fromNull()
       : start = '',
         end = '',
         total = 0,
         done = 0;
 
-  ProgresoData(
+  ProgressBarData(
       {required start,
       required end,
       required this.total,

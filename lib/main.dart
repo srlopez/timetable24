@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:timetable24/pages/reloj/reloj_controller.dart';
 
 import 'global/app_controller.dart';
 import 'global/app_themes.dart';
@@ -17,7 +16,11 @@ import 'pages/horario/horario_controller.dart';
 import 'pages/horario/horario_page.dart';
 import 'pages/marcas/marcas_controller.dart';
 import 'pages/marcas/marcas_page.dart';
+
+import 'pages/marcas_editor2/marcas_editor_controller2.dart';
+import 'pages/marcas_editor2/marcas_editor_page2.dart';
 import 'pages/reloj/reloj_page.dart';
+import 'pages/reloj/reloj_controller.dart';
 import 'pages/splash/splash_controller.dart';
 import 'pages/splash/splash_page.dart';
 import 'services/db_storagex.dart';
@@ -72,6 +75,13 @@ class App extends StatelessWidget {
           page: () => MarcasPage(),
           binding: BindingsBuilder(() {
             Get.put(MarcasController(app: AppController.to));
+          }),
+        ),
+        GetPage(
+          name: '/marcaseditor',
+          page: () => MarcasEditorPage2(),
+          binding: BindingsBuilder(() {
+            Get.put(MarcasEditorController2(app: AppController.to));
           }),
         ),
         GetPage(

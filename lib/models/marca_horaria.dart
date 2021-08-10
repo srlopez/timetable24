@@ -6,6 +6,8 @@ class Marca extends Duration {
     List h = s.split(':').map((i) => int.parse(i)).toList();
     return Marca(h[0] % 24, h[1]);
   }
+  int get minutos => int.parse(toString().split(':')[1]);
+  int get horas => int.parse(toString().split(':')[0]);
 
   int diff(Marca prev) {
     return (this - prev).inMinutes;

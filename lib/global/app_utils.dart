@@ -121,3 +121,9 @@ double getActividadesHeight(BuildContext context) {
 
   return pixelsHeight;
 }
+
+String to00(var data) {
+  var val = '00' + data.toString();
+  val = val.substring(val.length - 2);
+  return val;
+}

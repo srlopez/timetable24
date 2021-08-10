@@ -39,8 +39,12 @@ class HorarioPage extends StatelessWidget {
     AppController app,
     PageController horarioPageController,
   ) {
-    var menu = ['Marcas horarias', 'Establecer huecos en marcas'];
-    var menuIcon = [Icons.edit, Icons.restart_alt];
+    var menu = [
+      'Marcas horarias ·5m',
+      'Marcas horarias FineTunning',
+      'Establecer huecos en marcas',
+    ];
+    var menuIcon = [Icons.edit, Icons.edit, Icons.restart_alt];
     var brightness = MediaQuery.of(context).platformBrightness;
 
     return AppBar(
@@ -105,7 +109,9 @@ class HorarioPage extends StatelessWidget {
           },
           onSelected: ((value) async {
             if (value == menu[0]) await Get.toNamed('/marcas');
-            if (value == menu[1]) await app.inicializarActividades();
+            if (value == menu[1]) await Get.toNamed('/marcaseditor');
+            if (value == menu[2]) await app.inicializarActividades();
+
             _.update();
           }),
         ),

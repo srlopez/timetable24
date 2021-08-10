@@ -12,7 +12,7 @@ class RelojPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _ = RelojController.to;
-    final pd = _.progresoData;
+    final pd = _.progressBarData;
     print(pd.value.visible);
     return Scaffold(
         appBar: AppBar(
@@ -62,7 +62,7 @@ class RelojPage extends StatelessWidget {
   Widget _buildBotoneraFormato() {
     final _ = RelojController.to;
 
-    final pd = _.progresoData;
+    final pd = _.progressBarData;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,7 +94,7 @@ class RelojPage extends StatelessWidget {
 
   Widget _buildProgressBar(
     BuildContext context,
-    ProgresoData pd,
+    ProgressBarData pd,
   ) {
     final _ = RelojController.to;
 
