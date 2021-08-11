@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:timetable24/global/app_themes.dart';
 import 'package:timetable24/global/app_utils.dart';
 
 import '../../models/evento.dart';
@@ -110,7 +111,36 @@ class HorarioPage extends StatelessWidget {
           onSelected: ((value) async {
             if (value == menu[0]) await Get.toNamed('/marcas');
             if (value == menu[1]) await Get.toNamed('/marcaseditor');
-            if (value == menu[2]) await app.inicializarActividades();
+            if (value == menu[2]) {
+              bool inicializar = await Get.defaultDialog(
+                title: "Reiniciar Actividades",
+                middleText:
+                    "¿Entiendes que esta acción va a eliminar las Actividades de este Horario, y creará nuevos huecos en las Marcas establecidas?",
+                // content: Column(
+                //   children: [
+                //     Text("Your content goes here widget"),
+                //     Text("Your content goes here widget"),
+                //     Text("Your content goes here widget"),
+                //     Text("Your content goes here widget"),
+                //   ],
+                // ),
+                barrierDismissible: false,
+                radius: 20.0,
+                // onConfirm: () => Get.back(result: true),
+                // onCancel: () => Get.back(result: false),
+
+                confirm: ElevatedButton(
+                    onPressed: () => Get.back(result: true),
+                    child: Text("Entendido")),
+                cancel: ElevatedButton(
+                    onPressed: () => Get.back(result: false),
+                    child: Text("Cancelar"),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(cancelColor),
+                    )),
+              );
+              if (inicializar) await app.inicializarActividades();
+            }
 
             _.update();
           }),

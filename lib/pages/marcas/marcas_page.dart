@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:timetable24/global/app_themes.dart';
 import 'package:timetable24/models/marca_horaria.dart';
 
 import '../../global/app_controller.dart';
@@ -123,13 +124,15 @@ class MarcasPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         ElevatedButton(
+            onPressed: () => Get.back(result: false),
+            child: Text('Cancelar'),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(cancelColor),
+            )),
+        ElevatedButton(
           onPressed: onAceptar,
           child: Text('Aceptar'),
         ),
-        ElevatedButton(
-          onPressed: () => Get.back(result: false),
-          child: Text('Cancelar'),
-        )
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,7 +30,7 @@ class RelojPage extends StatelessWidget {
             quarterTurns: 1,
             child: Stack(
               children: [
-                // HORA
+                // HORA Y PROGRESO
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -41,8 +42,11 @@ class RelojPage extends StatelessWidget {
                         final iTicTac =
                             // Dos punto / Signo menos
                             !pd.value.visible || _.mode.value == 0 ? 2 : 0;
-                        return _buildReloj(
-                            context, textoModo, iTicTac, trailing);
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: _buildReloj(
+                              context, textoModo, iTicTac, trailing),
+                        );
                       }),
                     ),
                     // BARRA DE PROGRESO
@@ -51,43 +55,45 @@ class RelojPage extends StatelessWidget {
                         : Container()),
                   ],
                 ),
-                // FORMATO
-                _buildBotoneraFormato(),
+                // BARA DE FORMATO
+                _buildBotoneraFormatoBuilder(),
               ],
             ),
           ),
         ));
   }
 
-  Widget _buildBotoneraFormato() {
-    final _ = RelojController.to;
+  Widget _buildBotoneraFormatoBuilder() {
+    return LayoutBuilder(
+        builder: (BuildContext ctx, BoxConstraints constraints) {
+      if (constraints.maxWidth >= 360) return _buildBotoneraFormato();
 
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: _buildBotoneraFormato(ajuste: false),
+      );
+    });
+  }
+
+  Widget _buildBotoneraFormato({bool ajuste = true}) {
+    final _ = RelojController.to;
     final pd = _.progressBarData;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          //crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            // Obx(() => Simple(_.fontName(_.fonts[_.font.value]))),
-            Spacer(),
-            if (pd.value.visible) ...[
-              Obx(() =>
-                  Simple(_.alarmIcon[_.alarm.value], onPressed: _.setAlarm)),
-              Obx(() =>
-                  Simple(_.modeIcon[_.mode.value], onPressed: _.nextMode)),
-            ],
-            Obx(() => Simple('⬤', //'⓰'
-                onPressed: _.nextColor,
-                color: _.colores[_.siguienteColor()])),
-            Simple('▼|▲', onPressed: _.nextScale),
-            Simple('ℱont', onPressed: _.nextFont),
-            Simple(Icons.power_settings_new, onPressed: Get.back)
-          ],
-        ),
-        Spacer(),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        // Obx(() => Simple(_.fontName(_.fonts[_.font.value]))),
+        if (ajuste) Spacer(),
+        if (pd.value.visible) ...[
+          Obx(() => Simple(_.alarmIcon[_.alarm.value], onPressed: _.setAlarm)),
+          Obx(() => Simple(_.modeIcon[_.mode.value], onPressed: _.nextMode)),
+        ],
+        Obx(() => Simple('⬤', //'⓰'
+            onPressed: _.nextColor,
+            color: _.colores[_.siguienteColor()])),
+        Simple('▼|▲', onPressed: _.nextScale),
+        Simple('ℱont', onPressed: _.nextFont),
+        Simple(Icons.power_settings_new, onPressed: Get.back)
       ],
     );
   }

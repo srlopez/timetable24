@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+var cancelColor = Colors.red.shade800;
+
 TextTheme lightTextTheme = TextTheme(
     // bodyText1: GoogleFonts.openSans(
     // fontSize: 14.0,
