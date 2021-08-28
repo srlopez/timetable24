@@ -5,6 +5,7 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import 'global/app_controller.dart';
 import 'global/app_themes.dart';
+import 'services/db_storagex.dart';
 import 'models/evento.dart';
 import 'pages/actividad/actividad_form_page.dart';
 import 'pages/agenda/agenda_controller.dart';
@@ -14,16 +15,16 @@ import 'pages/home/home_controller.dart';
 import 'pages/home/home_page.dart';
 import 'pages/horario/horario_controller.dart';
 import 'pages/horario/horario_page.dart';
-import 'pages/marcas/marcas_controller.dart';
-import 'pages/marcas/marcas_page.dart';
 
-import 'pages/marcas_editor2/marcas_editor_controller2.dart';
-import 'pages/marcas_editor2/marcas_editor_page2.dart';
 import 'pages/reloj/reloj_page.dart';
 import 'pages/reloj/reloj_controller.dart';
 import 'pages/splash/splash_controller.dart';
 import 'pages/splash/splash_page.dart';
-import 'services/db_storagex.dart';
+
+import 'pages/marcas/marcas_controller.dart';
+import 'pages/marcas/marcas_page.dart';
+import 'pages/marcas_editor2/marcas_editor_controller2.dart';
+import 'pages/marcas_editor2/marcas_editor_page2.dart';
 
 void main() async {
   initializeDateFormatting('es_ES', null);

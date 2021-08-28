@@ -18,7 +18,6 @@ class HomePage extends StatelessWidget {
             children: [
               AgendaPage(),
               HorarioPage(),
-              //RelojPage(),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(

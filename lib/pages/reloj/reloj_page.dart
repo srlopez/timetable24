@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -107,8 +106,8 @@ class RelojPage extends StatelessWidget {
     var font = _.fonts[0];
     var fStyle =
         Theme.of(context).textTheme.bodyText1!.copyWith(color: pd.color);
+    var fScale = 2.0;
 
-    var height = 30.0;
     var textoCentral = [_.modeTexts[1], _.modeTexts[0]][_.mode.value] +
         ' ' +
         [_.modeTrailing[1], ''][_.mode.value];
@@ -116,14 +115,12 @@ class RelojPage extends StatelessWidget {
     var done = pd.done * 60 + int.parse(_.currentHMS[2]);
     var notdone = (pd.total - pd.done) * 60 - int.parse(_.currentHMS[2]);
 
-    var decoProgressBar = BoxDecoration(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(height / 2),
-        bottomLeft: Radius.circular(height / 2),
-        topRight: Radius.circular(height / 2),
-        bottomRight: Radius.circular(height / 2),
-      ),
-    );
+    var barHeight = 30.0;
+    BoxDecoration roundedProgressBar(num h) => BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(h / 2),
+          ),
+        );
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +130,7 @@ class RelojPage extends StatelessWidget {
         Text(
           pd.start,
           style: font(textStyle: fStyle),
-          textScaleFactor: 2,
+          textScaleFactor: fScale,
         ),
         SizedBox(width: 10),
         Expanded(
@@ -141,27 +138,25 @@ class RelojPage extends StatelessWidget {
           alignment: AlignmentDirectional.center,
           children: [
             Container(
-              decoration: decoProgressBar,
-              height: height,
+              decoration: roundedProgressBar(barHeight),
+              height: barHeight,
               clipBehavior: Clip.hardEdge,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: done,
-                    child: Container(color: darken(pd.color, 0)),
-                  ),
-                  Expanded(
-                    flex: notdone,
-                    child: Container(color: lighten(pd.color, .3)),
-                  ),
-                ],
-              ),
+              child: Row(children: [
+                Expanded(
+                  flex: done,
+                  child: Container(color: darken(pd.color, 0)),
+                ),
+                Expanded(
+                  flex: notdone,
+                  child: Container(color: lighten(pd.color, .3)),
+                )
+              ]),
             ),
             Center(
               child: Text(
                 textoCentral,
                 style: font(textStyle: fStyle.copyWith(color: Colors.black)),
-                textScaleFactor: 2,
+                textScaleFactor: fScale,
               ),
             ),
           ],
@@ -170,7 +165,7 @@ class RelojPage extends StatelessWidget {
         Text(
           pd.end,
           style: font(textStyle: fStyle),
-          textScaleFactor: 2,
+          textScaleFactor: fScale,
         ),
         SizedBox(width: 10),
       ],
