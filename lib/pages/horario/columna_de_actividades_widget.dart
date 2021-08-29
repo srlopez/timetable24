@@ -58,9 +58,9 @@ class ActividadesColumn extends StatelessWidget {
                           ? actividad
                           : GestureDetector(
                               child: actividad,
-                              onTap: (() {
-                                if (acts[i].activo) cambiar(acts[i]);
-                              }),
+                              // onTap: () {
+                              //   if (acts[i].activo) cambiar(acts[i]);
+                              // },
                               onDoubleTap: () async {
                                 if (!acts[i].activo) {
                                   // onTap: Activamos
