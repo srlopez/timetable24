@@ -9,10 +9,12 @@ import 'agenda_controller.dart';
 
 var backColores = [];
 
-late GlobalKey semanaActualKey;
+// late GlobalKey semanaActualKey;
 
 class AgendaPage extends StatelessWidget {
-  const AgendaPage({Key? key}) : super(key: key);
+  AgendaPage({Key? key}) : super(key: key);
+
+  GlobalKey semanaActualKey = new GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,6 @@ class AgendaPage extends StatelessWidget {
       darken(Theme.of(context).canvasColor),
     ];
     var lunesHoy = lunesDeHoy();
-    semanaActualKey = new GlobalKey();
 
     return Scaffold(
       appBar: _buildAppBar(context, _),
@@ -82,7 +83,7 @@ class AgendaPage extends StatelessWidget {
                             onEdited: _.edited,
                             key: lunes == lunesHoy
                                 ? semanaActualKey
-                                : Key('$nsemana'),
+                                : Key('$nsemana$i'),
                           );
                         }),
                       ],
@@ -127,7 +128,7 @@ class AgendaPage extends StatelessWidget {
               .copyWith(statusBarColor: Theme.of(context).canvasColor),
       //backgroundColor: Theme.of(context).canvasColor,
       foregroundColor: Theme.of(context).accentColor,
-      title: Text('Agenda ${cursoEscolar()}'),
+      title: Text('Curso ${cursoEscolar()}'),
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.today),

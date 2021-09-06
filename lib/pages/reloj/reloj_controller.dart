@@ -202,9 +202,9 @@ class RelojController extends GetxController {
 
   void playSound() {
     if (!playing)
-      FlutterRingtonePlayer.playNotification(
-          looping: false, asAlarm: true, volume: 1);
-    // FlutterRingtonePlayer.playRingtone(looping: true, asAlarm: true);
+      //  FlutterRingtonePlayer.playNotification(
+      //      looping: false, asAlarm: true, volume: 1);
+      FlutterRingtonePlayer.playRingtone(looping: false, asAlarm: false);
     // FlutterRingtonePlayer.playAlarm(asAlarm: true);
     playing = true;
   }
