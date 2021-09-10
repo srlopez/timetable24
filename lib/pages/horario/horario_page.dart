@@ -58,7 +58,7 @@ class HorarioPage extends StatelessWidget {
       foregroundColor: Theme.of(context).accentColor,
       title: Text(
         //'${app.horarios[app.horario.value]}${_.nsemana} - ${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
-        '${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
+        '#${_.nsemana} · ${Horario.nombreMes[_.lunes.month]} ${_.lunes.year}',
       ),
       actions: <Widget>[
         IconButton(
